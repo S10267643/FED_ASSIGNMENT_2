@@ -38,23 +38,24 @@ body, html {
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
+    gap: 10px;
   }
   
   .search-bar {
-    flex: 1;
+    flex-grow: 1; /* Takes up remaining space */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px;
     outline: none;
   }
   
   .language-select {
+    width: 150px; /* Fixed size for the dropdown */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px;
     outline: none;
     background-color: #f4f4f4;
   }
