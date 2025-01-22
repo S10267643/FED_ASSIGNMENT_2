@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset default styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -38,24 +38,26 @@ body, html {
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
-    gap: 10px;
+    width: 100%; /* Ensure it spans the full width of the page */
+    box-sizing: border-box;
   }
   
   .search-bar {
-    flex-grow: 1; /* Takes up remaining space */
+    flex: 1; /* Takes up all available space */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px; /* Rounded corners for the left side */
     outline: none;
   }
   
   .language-select {
-    width: 150px; /* Fixed size for the dropdown */
+    width: 150px; /* Fixed width for the dropdown */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-left: none; /* No border between the search bar and dropdown */
+    border-radius: 0 4px 4px 0; /* Rounded corners for the right side */
     outline: none;
     background-color: #f4f4f4;
   }
