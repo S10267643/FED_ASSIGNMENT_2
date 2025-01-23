@@ -9,6 +9,7 @@ body, html {
   /* Header styles */
   header {
     width: 100%;
+    position:fixed;
   }
   
   /* Top bar styles */
