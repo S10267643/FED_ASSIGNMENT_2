@@ -56,14 +56,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  height: 55vh;
+ 
+  background-color: #87e1ff;
 }
 
 .game-img-container img {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+ height:10px;
 }
 
