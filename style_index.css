@@ -57,9 +57,26 @@
   
 
   /* for game section */
+
 .game-img-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: aquamarine;
+  justify-content: center; 
+  align-items: center;    
+  width: 100%;            
+  height: auto;         
+  padding: 1rem;          
+  background-color: #f9f9f9; 
+  border-radius: 10px;    
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;     
 }
+
+
+.game-img-container img {
+  max-width: 100%;    
+  height: auto;          
+  border-radius: 5px;  
+  border: 2px solid #ddd;
+}
+
+
