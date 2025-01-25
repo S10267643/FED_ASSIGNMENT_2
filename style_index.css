@@ -1,18 +1,11 @@
-/* Reset default styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header styles */
+
+
+  /* for header */
   header {
     width: 100%;
     position:fixed;
   }
   
-  /* Top bar styles */
   .top-bar {
     display: flex;
     justify-content: space-between;
@@ -33,33 +26,40 @@ body, html {
     color: #007BFF;
   }
   
-  /* Search bar container */
   .search-bar-container {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
-    width: 100%; /* Ensure it spans the full width of the page */
+    width: 100%; 
     box-sizing: border-box;
   }
   
   .search-bar {
-    flex: 1; /* Takes up all available space */
+    flex: 1;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px; /* Rounded corners for the left side */
+    border-radius: 4px 0 0 4px;
     outline: none;
   }
   
   .language-select {
-    width: 150px; /* Fixed width for the dropdown */
+    width: 150px; 
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
-    border-left: none; /* No border between the search bar and dropdown */
-    border-radius: 0 4px 4px 0; /* Rounded corners for the right side */
+    border-left: none;
+    border-radius: 0 4px 4px 0; 
     outline: none;
     background-color: #f4f4f4;
   }
   
+
+  /* for game section */
+.game-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
