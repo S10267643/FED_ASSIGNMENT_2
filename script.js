@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //[STEP 8]: Make our AJAX calls
       // Once we get the response, we modify our table content by creating the content internally. We run a loop to continuously add on data
       // RESTDb/NoSql always adds in a unique id for each data; we tap on it to have our data and place it into our links 
-      fetch("https://mokesell-1e1c.restdb.io/rest/system_jobs", settings)
+      fetch("https://mokesell-1e1c.restdb.io/rest/users", settings)
         .then(response => response.json())
         .then(response => {
           let content = "";
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
       //[STEP 13a]: Send our AJAX request and hide the update contact form
-      fetch(`https://mokesell-1e1c.restdb.io/rest/system_jobs/${id}`, settings)
+      fetch(`https://mokesell-1e1c.restdb.io/rest/users/${id}`, settings)
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         };
     
-        fetch(`https://mokesell-1e1c.restdb.io/rest/system_jobs/${id}`, settings)
+        fetch(`https://mokesell-1e1c.restdb.io/rest/users/${id}`, settings)
           .then(response => response.json())
           .then(data => {
             console.log(data);
