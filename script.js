@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const APIKEY = "679717f9f9d2bbe70d181e2e"; // Replace with your actual API key
+  const APIKEY = "679717f9f9d2bbe70d181e2e";
 
   // Handle Sign-Up form submission
   document.getElementById("signUpForm").addEventListener("submit", async function(event) {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      const apiUrl = "https://your_database_name.restdb.io/rest/users"; // Update with your actual DB URL
+      const apiUrl = "https://mokesell-1e1c.restdb.io/rest/system_jobs"; // Update with your actual DB URL
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (userId) {
       try {
-        const apiUrl = `https://your_database_name.restdb.io/rest/users/${userId}`; // Update with your actual DB URL and the user ID
+        const apiUrl = `https://mokesell-1e1c.restdb.io/rest/system_jobs/${userId}`; // Update with your actual DB URL and the user ID
         const response = await fetch(apiUrl, {
           method: "DELETE",
           headers: {
