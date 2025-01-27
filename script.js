@@ -212,6 +212,31 @@ document.addEventListener("DOMContentLoaded", function () {
   
   });
 
+
+
+
+
+//Modal for account to work
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("authModal");
+    const accountBtn = document.querySelector(".account-access p");
+    const closeBtn = document.querySelector(".close-btn");
+
+    function toggleModal() {
+        modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
+    }
+
+    accountBtn.addEventListener("click", toggleModal);
+    closeBtn.addEventListener("click", toggleModal);
+
+    // Close modal when clicking outside content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
   // Game files
 
   function startGame() {
