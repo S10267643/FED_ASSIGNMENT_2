@@ -83,51 +83,5 @@
     </footer>
   </body>
 
-  <script>
-    // Function to toggle modal visibility
-    function toggleModal() {
-      const modal = document.getElementById("authModal");
-      modal.style.display = modal.style.display === "flex" ? "none" : "flex";
-    }
-
-    // Handle form submission for signing up
-    document.getElementById("signUpForm").addEventListener("submit", async function(event) {
-      event.preventDefault(); // Prevent form from submitting the default way
-
-      const fullName = document.getElementById("fullName").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      const newUser = {
-        fullName,
-        email,
-        password
-      };
-
-      try {
-        // API URL for your RestDB database collection (replace 'your_database_name' with actual name)
-        const apiUrl = "https://your_database_name.restdb.io/rest/users";
-
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-apikey": "your_restdb_api_key",  // Replace with your RestDB API key
-            "cache-control": "no-cache"
-          },
-          body: JSON.stringify(newUser)
-        });
-
-        if (response.ok) {
-          alert("Account created successfully!");
-          toggleModal(); // Close modal after submission
-        } else {
-          alert("Failed to create account. Please try again.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("There was an error creating your account. Please try again.");
-      }
-    });
-  </script>
+  
 </html>
