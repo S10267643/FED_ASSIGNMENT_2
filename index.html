@@ -1,86 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MokeSell</title>
-  <link rel="stylesheet" href="style_index.css">
-  <link href="script.js">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MokeSell</title>
+    <link href="style_index.css" rel="stylesheet" type="text/css" />
+    <script src="script.js" defer></script> <!-- External JS for handling logic -->
+  </head>
 
-  <header>
-    <div class="top-bar">
-      <section class="img-container">
-        <img class="logo" src="imgs/ms_logo.jpg" alt="MokeSell Logo" />
-      </section>
-      
-      <section class="account-access">
-        <p id="accountLink" onclick="toggleModal()">Account</p>
-        <div class="modal" id="authModal">
-          <div class="modal-content">
-            <button class="close-btn" onclick="toggleModal()">&times;</button>
-            <h2>Sign Up</h2>
-            <form id="signUpForm">
-              <input type="text" placeholder="Full Name" required id="fullName" />
-              <input type="email" placeholder="Email" required id="email" />
-              <input type="password" placeholder="Password" required id="password" />
-              <button type="submit">Sign Up</button>
-            </form>
-            <h2 style="margin-top: 2rem;">Login</h2>
-            <form id="loginForm">
-              <input type="email" placeholder="Email" required />
-              <input type="password" placeholder="Password" required />
-              <button type="submit">Login</button>
-            </form>
+  <body>
+    <header>
+      <div class="top-bar">
+        <section class="img-container">
+          <img class="logo" src="imgs/ms_logo.jpg" />
+        </section>
+
+        <section class="account-access">
+          <p id="accountLink">Account</p> <!-- Removed the onclick here -->
+          <div class="modal" id="authModal">
+            <div class="modal-content">
+              <button class="close-btn" onclick="toggleModal()">&times;</button>
+              <h2>Sign Up</h2>
+              <form id="signUpForm">
+                <input type="text" placeholder="Full Name" required id="fullName" />
+                <input type="email" placeholder="Email" required id="email" />
+                <input type="password" placeholder="Password" required id="password" />
+                <button type="submit">Sign Up</button>
+              </form>
+              <h2 style="margin-top: 2rem;">Login</h2>
+              <form id="loginForm">
+                <input type="email" placeholder="Email" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="search-bar-container">
+        <input type="text" class="search-bar" placeholder="Search..." />
+        <select class="language-select">
+          <option>English</option>
+          <option>Chinese</option>
+          <option>Malay</option>
+          <option>Tamil</option>
+        </select>
+      </div>
+    </header>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About Us Section -->
+        <div class="footer-about">
+          <h3>About MokeSell</h3>
+          <p>MokeSell is your one-stop solution for quality products at unbeatable prices. Shop with us and experience convenience and trust.</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#" target="_blank" class="social-icon">Facebook</a>
+            <a href="#" target="_blank" class="social-icon">Instagram</a>
+            <a href="#" target="_blank" class="social-icon">Twitter</a>
           </div>
         </div>
-      </section>
-    </div>
 
-    <div class="search-bar-container">
-      <input type="text" class="search-bar" placeholder="Search..." />
-      <select class="language-select">
-        <option>English</option>
-        <option>Chinese</option>
-        <option>Malay</option>
-        <option>Tamil</option>
-      </select>
-    </div>
-  </header>
-
-  <section class="game-img-container">
-    <img src="" class="game-img" alt="Game Image">
-  </section>
-
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h3>About MokeSell</h3>
-        <p>MokeSell is your one-stop solution for quality products at unbeatable prices. Shop with us and experience convenience and trust.</p>
-      </div>
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <div class="social-links">
-          <a href="#" target="_blank" class="social-icon">Facebook</a>
-          <a href="#" target="_blank" class="social-icon">Instagram</a>
-          <a href="#" target="_blank" class="social-icon">Twitter</a>
+        <!-- App Download Section -->
+        <div class="footer-app">
+          <h3>Download Our App</h3>
+          <p>Get the best shopping experience on your mobile.</p>
+          <div class="app-buttons">
+            <a href="#" class="app-link">Download for iOS</a>
+            <a href="#" class="app-link">Download for Android</a>
+          </div>
         </div>
       </div>
-      <div class="footer-app">
-        <h3>Download Our App</h3>
-        <p>Get the best shopping experience on your mobile.</p>
-        <div class="app-buttons">
-          <a href="#" class="app-link">Download for iOS</a>
-          <a href="#" class="app-link">Download for Android</a>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 MokeSell. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    </footer>
+  </body>
 </html>
