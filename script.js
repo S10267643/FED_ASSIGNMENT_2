@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
       //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-      fetch("https://mokesell-1e1c.restdb.io/rest/system_jobs", settings)
+      fetch("https://mokesell-1e1c.restdb.io/rest/users", settings)
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -211,6 +211,34 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   
   });
+
+  // Game files
+
+  function startGame() {
+    // Fetch a game image from the backend
+    fetch('Catch-The-Beat-Java--master/') // Replace with your backend endpoint
+        .then(response => response.blob())
+        .then(imageBlob => {
+            const imageUrl = URL.createObjectURL(imageBlob);
+            document.getElementById('gameImage').src = imageUrl; // Set the game image
+        })
+        .catch(error => console.error('Error loading game image:', error));
+
+    // Fetch a sound file for the game (e.g., start sound)
+    const startSound = new Audio('http://localhost:8080/sounds/start.wav');
+    startSound.play(); // Play the start sound
+}
+
+// This function can be used to communicate with your Java backend to fetch game data
+function fetchGameData() {
+    fetch('http://localhost:8080/get-game-data')  // Your API endpoint
+        .then(response => response.json())
+        .then(data => {
+            console.log('Game data:', data);
+            // Handle the game data (e.g., set player score, level, etc.)
+        })
+        .catch(error => console.error('Error fetching game data:', error));
+}
   
 
 
@@ -218,51 +246,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-  function toggleModal() {
-    const modal = document.getElementById("authModal");
-    modal.style.display = modal.style.display === "flex" ? "none" : "flex";
-  }
-
-  // Handle form submission for signing up
-  document.getElementById("signUpForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); // Prevent form from submitting the default way
-
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const newUser = {
-      fullName,
-      email,
-      password
-    };
-
-    try {
-      // API URL for your RestDB database collection (replace 'your_database_name' with actual name)
-      const apiUrl = "https://your_database_name.restdb.io/rest/users";
-
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-apikey": "your_restdb_api_key",  // Replace with your RestDB API key
-          "cache-control": "no-cache"
-        },
-        body: JSON.stringify(newUser)
-      });
-
-      if (response.ok) {
-        alert("Account created successfully!");
-        toggleModal(); // Close modal after submission
-      } else {
-        alert("Failed to create account. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("There was an error creating your account. Please try again.");
-    }
-  });
 
 
