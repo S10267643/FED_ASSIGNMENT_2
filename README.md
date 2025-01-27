@@ -6,3 +6,4 @@ This website is aimed towards users who are intersted in buying or selling produ
 ## Credits 
 ### Media 
 ### Acknowledgements
+Various features of the MokeSell website have been inspired from Carousell.
