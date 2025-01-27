@@ -71,12 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Modal toggle function
-  function toggleModal() {
-    const modal = doc
-  }});
+  
   
 
-
+  function toggleModal() {
+    const modal = document.getElementById("authModal");
+    modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+  }
 
 
 
