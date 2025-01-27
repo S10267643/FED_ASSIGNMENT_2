@@ -14,11 +14,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 .logo {
-  width: 70px;
+  width: 100px;
   
   
 }
