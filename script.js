@@ -217,24 +217,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //Modal for account to work
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("authModal");
-    const accountBtn = document.querySelector(".account-access p");
-    const closeBtn = document.querySelector(".close-btn");
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("authModal");
+  const accountBtn = document.querySelector(".account-access p");
+  const closeBtn = document.querySelector(".close-btn");
 
-    function toggleModal() {
-        modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
-    }
+  function toggleModal() {
+      if (modal.style.display === "flex") {
+          modal.style.display = "none";
+      } else {
+          modal.style.display = "flex";
+      }
+  }
 
-    accountBtn.addEventListener("click", toggleModal);
-    closeBtn.addEventListener("click", toggleModal);
+  // Open modal when clicking "Account"
+  accountBtn.addEventListener("click", toggleModal);
 
-    // Close modal when clicking outside content
-    window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
+  // Close modal when clicking the X button
+  closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+  });
+
+  // Close modal when clicking outside the modal-content
+  window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
+  });
 });
 
   // Game files
