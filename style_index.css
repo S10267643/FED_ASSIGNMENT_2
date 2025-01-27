@@ -69,3 +69,101 @@ header {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+/*footer*/
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* About Section */
+.footer-about h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-about p {
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Social Media Section */
+.footer-social h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.social-icon {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #555;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #007bff;
+}
+
+/* App Download Section */
+.footer-app h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.app-link:hover {
+  background-color: #0056b3;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  font-size: 0.8rem;
+  color: #ccc;
+}
