@@ -14,12 +14,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: bold;
+  width: auto;
+  
 }
 
 .account-access {
