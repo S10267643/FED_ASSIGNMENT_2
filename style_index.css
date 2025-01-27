@@ -1,10 +1,16 @@
-body, html {
+/* Reset margins and paddings */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Basic styling */
+body, html {
   font-family: Arial, sans-serif;
 }
 
+/* Header Styles */
 header {
   width: 100%;
 }
@@ -14,13 +20,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #000000;
+  background-color: #000;
 }
 
 .logo {
   width: 100px;
-  
-  
 }
 
 .account-access {
@@ -53,29 +57,23 @@ header {
   border-radius: 0 4px 4px 0;
 }
 
+/* Game Image Container */
 .game-img-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 55vh;
- 
   background-color: #87e1ff;
 }
 
 .game-img-container img {
- width:50px;
- height: auto;
- background-color: azure;
- padding:20px;
-
+  width: 50px;
+  height: auto;
+  background-color: azure;
+  padding: 20px;
 }
 
-.trending-container {
-  display: flex;
-  background-color: #87e1ff;
-}
-
-/*account sign up page */
+/* Modal for Account Sign Up/Login */
 .modal {
   display: none;
   position: fixed;
@@ -136,13 +134,7 @@ header {
   float: right;
 }
 
-
-
-
-
-
-
-/*footer*/
+/* Footer Styles */
 .footer {
   background-color: #333;
   color: #fff;
@@ -158,7 +150,6 @@ header {
   margin: 0 auto;
 }
 
-/* About Section */
 .footer-about h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -170,7 +161,6 @@ header {
   color: #ccc;
 }
 
-/* Social Media Section */
 .footer-social h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -196,7 +186,6 @@ header {
   background-color: #007bff;
 }
 
-/* App Download Section */
 .footer-app h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
