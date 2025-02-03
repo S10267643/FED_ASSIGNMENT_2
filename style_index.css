@@ -334,7 +334,7 @@ body {
     text-align: center;
   }
 
-  .listing-container {
+  .foryou-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Adjust space between items */
