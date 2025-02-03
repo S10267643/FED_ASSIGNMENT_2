@@ -1,38 +1,102 @@
-/* Reset margins and paddings */
-* {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #f4f4f4;
 }
 
-/* Basic styling */
-body, html {
-  font-family: Arial, sans-serif;
-}
-
-/* Header Styles */
-.header {
-  width: 100%;
-  
-}
-
+/* Top Bar */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #007bff;
   padding: 10px 20px;
-  background-color: #000;
+}
+
+/* Logo */
+.img-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   width: 100px;
+  height: auto;
 }
 
-.account-access {
-  font-size: 16px;
+/* Account Access Button */
+.account-access .btn {
+  background-color: white;
+  color: #007bff;
+  border: none;
+  padding: 8px 15px;
   cursor: pointer;
-  color: #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
 }
+
+.account-access .btn:hover {
+  background-color: #f8f9fa;
+}
+
+/* Modal Styling */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: none;
+}
+
+.modal-header .close {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Signup & Login Sections */
+.modal.signup,
+.modal.login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-default {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-default:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
 
 .search-bar-container {
   display: flex;
@@ -75,134 +139,8 @@ body, html {
 }
 
 
-/* Centering the modal */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Modal dialog */
-.modal-dialog {
-  background: white;
-  width: 400px;
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-}
 
-/* Modal content */
-.modal-content {
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-/* Close button */
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #555;
-}
-
-.close:hover {
-  color: black;
-}
-
-/* Separate Sign Up & Login sections */
-.modal.signup,
-.modal.login {
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-}
-
-/* Add separation between sections (line and spacing) */
-.modal.signup {
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-.modal.login {
-  padding-top: 20px;
-}
-
-/* Line separator */
-.modal-content:after {
-  content: "";
-  display: block;
-  margin: 20px 0;
-  border-top: 2px solid #ddd;
-}
-
-/* Form inputs */
-.modal input {
-  width: 90%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Buttons */
-.btn {
-  width: 90%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn-default {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-default:hover {
-  background-color: #0056b3;
-}
-
-.btn-info {
-  background-color: #17a2b8;
-  color: white;
-}
-
-.btn-info:hover {
-  background-color: #117a8b;
-}
-
-/* Button for closing the modal */
-.btn[data-dismiss="modal"] {
-  background: #dc3545;
-  margin-top: 20px;
-}
-
-.btn[data-dismiss="modal"]:hover {
-  background: #c82333;
-}
 
 
 
