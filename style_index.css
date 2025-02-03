@@ -110,10 +110,12 @@ body, html {
   cursor: pointer;
 }
 
-.trending-section {
+.trending-section,.discount-section, .foryou-section {
   width: 100%;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
 .trending-container {
