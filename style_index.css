@@ -256,3 +256,11 @@ body, html {
   font-size: 0.8rem;
   color: #ccc;
 }
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
