@@ -109,6 +109,66 @@ header {
   cursor: pointer;
 }
 
+.trending-section {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.trending-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.trending-items {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.trending-items::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  min-width: 150px;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.scroll-btn {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+#scroll-left {
+  left: 0;
+}
+
+#scroll-right {
+  right: 0;
+}
 
 /* Footer Styles */
 .footer {
