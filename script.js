@@ -1,3 +1,10 @@
+function toggleModal() {
+  const modal = document.getElementById('authModal');
+  modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+}
+
+
+
 //[STEP 0]: Make sure our document is A-OK
 document.addEventListener("DOMContentLoaded", function () {
     // What kind of interface we want at the start 
