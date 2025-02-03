@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <title>MokeSell</title>
     <link href="style_index.css" rel="stylesheet" type="text/css" />
-        <link href="api.js" defer></script>
+    <link href="api.js" defer></script>
     <link href="signup.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,10 +23,10 @@
           <img class="logo" src="imgs/ms_logo.jpg" >
         </section>
         
-        <section class="account-access">
-          <p>Register</p>
-          <div class="modal" id="authModal">
-            <div class="modal-content">
+        <section class="account-access" id="authModal">
+          <p>Account</p>
+          >
+            <div class="modal">
                 <button class="close-btn" onclick="toggleModal()">&times;</button>
                 <h2>Sign Up</h2>
                 <form id="signUpForm">
@@ -42,9 +42,7 @@
                     <input type="password" placeholder="Password" required />
                     <button type="submit">Login</button>
                 </form>
-                
             </div>
-          </div>
         </section>
 
       </div>
