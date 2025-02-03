@@ -116,102 +116,78 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   
-    //[STEP 10]: Create our update listener
-    // Here we tap onto our previous table when we click on update
-    // This is a delegation feature of jQuery
-    // Because our content is dynamic in nature, we listen in on the main container which is "#contact-list". For each row, we have a class .update to help us
-    document.getElementById("contact-list").addEventListener("click", function (e) {
-      if (e.target.classList.contains("update")) {
-        e.preventDefault();
-        // Update our update form values
-        let contactName = e.target.getAttribute("data-name");
-        let contactEmail = e.target.getAttribute("data-email");
-        let contactMsg = e.target.getAttribute("data-msg");
-        let contactId = e.target.getAttribute("data-id");
-        console.log(e.target.getAttribute("data-msg"));
-  
-        //[STEP 11]: Load in our data from the selected row and add it to our update contact form 
-        document.getElementById("update-contact-name").value = contactName;
-        document.getElementById("update-contact-email").value = contactEmail;
-        document.getElementById("update-contact-msg").value = contactMsg;
-        document.getElementById("update-contact-id").value = contactId;
-        document.getElementById("update-contact-container").style.display = "block";
-      }
-      else if (e.target.classList.contains("delete")) {
-        e.preventDefault();
-  
-        let contactId = e.target.dataset.id;
-        deleteRecord(contactId);
-      }
-    });//end contact-list listener for update function
-  
-    //[STEP 12]: Here we load in our contact form data
-    // Update form listener
-    document.getElementById("update-contact-submit").addEventListener("click", function (e) {
+    document.getElementById("signup-submit").addEventListener("click", function (e) {
       e.preventDefault();
-      // Retrieve all my update form values
-      let contactName = document.getElementById("update-contact-name").value;
-      let contactEmail = document.getElementById("update-contact-email").value;
-      let contactMsg = document.getElementById("update-contact-msg").value;
-      let contactId = document.getElementById("update-contact-id").value;
   
-      console.log(document.getElementById("update-contact-msg").value);
-      console.log(contactMsg);
+      let username = document.getElementById("signup-username").value;
+      let email = document.getElementById("signup-email").value;
+      let password = document.getElementById("signup-password").value;
   
-      //[STEP 12a]: We call our update form function which makes an AJAX call to our RESTDB to update the selected information
-      updateForm(contactId, contactName, contactEmail, contactMsg);
-    });//end updatecontactform listener
+      let userData = {
+          "username": username,
+          "email": email,
+          "password": password // Ideally, hash before storing
+      };
   
-    //[STEP 13]: Function that makes an AJAX call and processes it 
-    // UPDATE Based on the ID chosen
-    function updateForm(id, contactName, contactEmail, contactMsg) {
-      //@TODO create validation methods for id etc. 
-  
-      var jsondata = { "name": contactName, "email": contactEmail, "message": contactMsg };
-      var settings = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "x-apikey": APIKEY,
-          "Cache-Control": "no-cache"
-        },
-        body: JSON.stringify(jsondata)
-      }
-  
-      //[STEP 13a]: Send our AJAX request and hide the update contact form
-      fetch(`https://mokesell-1e1c.restdb.io/rest/users/${id}`, settings)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          document.getElementById("update-contact-container").style.display = "none";
-          // Update our contacts table
-          getContacts();
-        });
-  
-    }//end updateform function
-      //delete function
-      function deleteRecord(id) {
-        let settings = {
-          method: "DELETE",
+      let settings = {
+          method: "POST",
           headers: {
+              "Content-Type": "application/json",
+              "x-apikey": APIKEY,
+              "Cache-Control": "no-cache"
+          },
+          body: JSON.stringify(userData)
+      };
+  
+      fetch("https://mokesell-1e1c.restdb.io/rest/users", settings)
+          .then(response => response.json())
+          .then(data => {
+              console.log("User Created:", data);
+              localStorage.setItem("loggedInUser", JSON.stringify(data));
+              updateAccountButton(data.username);
+              document.getElementById("authModal").style.display = "none"; // Close modal
+          })
+          .catch(error => console.error("Error:", error));
+  });
+  document.getElementById("login-submit").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    let email = document.getElementById("login-email").value;
+    let password = document.getElementById("login-password").value;
+
+    let settings = {
+        method: "GET",
+        headers: {
             "Content-Type": "application/json",
             "x-apikey": APIKEY,
             "Cache-Control": "no-cache"
-          }
-        };
-    
-        fetch(`https://mokesell-1e1c.restdb.io/rest/users/${id}`, settings)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            //update our contacts table
-            getContacts();
-          })
-          .catch(error => console.log(error));
-      }
-  
-  });
+        }
+    };
 
+    fetch(`https://mokesell-1e1c.restdb.io/rest/users?q={"email":"${email}"}`, settings)
+        .then(response => response.json())
+        .then(users => {
+            if (users.length > 0 && users[0].password === password) {
+                console.log("Login Successful:", users[0]);
+                localStorage.setItem("loggedInUser", JSON.stringify(users[0]));
+                updateAccountButton(users[0].username);
+                document.getElementById("authModal").style.display = "none"; // Close modal
+            } else {
+                alert("Invalid email or password.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+});
+function updateAccountButton(username) {
+  let accountBtn = document.querySelector(".account-access p");
+  accountBtn.textContent = username;
+}
+document.addEventListener("DOMContentLoaded", function () {
+  let user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (user) {
+      updateAccountButton(user.username);
+  }
+});
 
 
 
