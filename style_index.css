@@ -11,7 +11,7 @@ body, html {
 }
 
 /* Header Styles */
-header {
+.header {
   width: 100%;
   background-color: #000;
 }
