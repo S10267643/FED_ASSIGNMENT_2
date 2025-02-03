@@ -1,7 +1,4 @@
-function toggleModal() {
-    const modal = document.getElementById('authModal');
-    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-  }
+
 document.addEventListener("DOMContentLoaded", function () {
     const authModal = document.getElementById("authModal");
     const accountAccess = document.querySelector(".account-access");
