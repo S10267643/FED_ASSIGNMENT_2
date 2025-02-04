@@ -1,46 +1,33 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+    const API_URL = "https://mokesell-536e.restdb.io/rest/users";
+    const API_KEY = "67a057fa417fee624eb30f33";
+    const signUpForm = document.getElementById("signUpForm");
+    const loginForm = document.getElementById("loginForm");
     const authModal = document.getElementById("authModal");
-    const accountAccess = document.querySelector(".account-access");
     const closeBtn = document.querySelector(".close-btn");
 
-    // Show modal when clicking "Account"
-    accountAccess.addEventListener("click", function () {
+    document.getElementById("openAuthModal").addEventListener("click", function () {
         authModal.style.display = "flex";
     });
 
-    // Hide modal when clicking the close button
     closeBtn.addEventListener("click", function () {
         authModal.style.display = "none";
     });
 
-    // Hide modal if user clicks outside the modal
     window.addEventListener("click", function (event) {
         if (event.target === authModal) {
             authModal.style.display = "none";
         }
     });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    // API endpoint and key
-    const API_URL = "https://mokesell-536e.restdb.io/rest/users";
-    const API_KEY = "67a057fa417fee624eb30f33";
 
-    // SIGNUP FORM HANDLING
-    document.getElementById("signUpForm").addEventListener("submit", async function (event) {
+    signUpForm.addEventListener("submit", async function (event) {
         event.preventDefault();
+        const name = document.getElementById("signupName").value;
+        const email = document.getElementById("signupEmail").value;
+        const password = document.getElementById("signupPassword").value;
 
-        // Get form input values
-        const name = event.target.elements[0].value;
-        const email = event.target.elements[1].value;
-        const password = event.target.elements[2].value;
-
-        // Prepare user data
-        const userData = {
-            name: name,
-            email: email,
-            password: password // Ideally, hash the password before sending
-        };
+        const userData = { name, email, password };
 
         try {
             const response = await fetch(API_URL, {
@@ -55,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 alert("Sign-up successful! You can now log in.");
-                event.target.reset();
+                signUpForm.reset();
             } else {
                 alert("Error signing up. Try again.");
             }
@@ -65,13 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // LOGIN FORM HANDLING
-    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+    loginForm.addEventListener("submit", async function (event) {
         event.preventDefault();
-
-        // Get form input values
-        const email = event.target.elements[0].value;
-        const password = event.target.elements[1].value;
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
 
         try {
             const response = await fetch(`${API_URL}?q={"email":"${email}"}`, {
@@ -94,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (user.password === password) {
                 alert("Login successful!");
-                localStorage.setItem("user", JSON.stringify(user)); // Store user session
-                event.target.reset();
+                localStorage.setItem("user", JSON.stringify(user));
+                loginForm.reset();
             } else {
                 alert("Incorrect password. Try again.");
             }
