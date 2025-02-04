@@ -1,25 +1,26 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = "https://mokesell-536e.restdb.io/rest/users";
-    const API_KEY = "67a057fa417fee624eb30f33";
-    const signUpForm = document.getElementById("signUpForm");
-    const loginForm = document.getElementById("loginForm");
     const authModal = document.getElementById("authModal");
+    const openAuthModal = document.getElementById("openAuthModal");
     const closeBtn = document.querySelector(".close-btn");
 
-    document.getElementById("openAuthModal").addEventListener("click", function () {
+    // Ensure modal opens when clicking "Account" button
+    openAuthModal.addEventListener("click", function () {
         authModal.style.display = "flex";
     });
 
+    // Close modal when clicking the close button
     closeBtn.addEventListener("click", function () {
         authModal.style.display = "none";
     });
 
+    // Close modal when clicking outside of it
     window.addEventListener("click", function (event) {
         if (event.target === authModal) {
             authModal.style.display = "none";
         }
     });
+});
 
     signUpForm.addEventListener("submit", async function (event) {
         event.preventDefault();
