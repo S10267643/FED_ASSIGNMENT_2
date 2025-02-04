@@ -1,34 +1,46 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const authModal = document.getElementById("authModal");
-    const openAuthModal = document.getElementById("openAuthModal");
+    const accountAccess = document.querySelector(".account-access");
     const closeBtn = document.querySelector(".close-btn");
 
-    // Ensure modal opens when clicking "Account" button
-    openAuthModal.addEventListener("click", function () {
+    // Show modal when clicking "Account"
+    accountAccess.addEventListener("click", function () {
         authModal.style.display = "flex";
     });
 
-    // Close modal when clicking the close button
+    // Hide modal when clicking the close button
     closeBtn.addEventListener("click", function () {
         authModal.style.display = "none";
     });
 
-    // Close modal when clicking outside of it
+    // Hide modal if user clicks outside the modal
     window.addEventListener("click", function (event) {
         if (event.target === authModal) {
             authModal.style.display = "none";
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    // API endpoint and key
+    const API_URL = "https://mokesell-536e.restdb.io/rest/users";
+    const API_KEY = "67a057fa417fee624eb30f33";
 
-    signUpForm.addEventListener("submit", async function (event) {
+    // SIGNUP FORM HANDLING
+    document.getElementById("signUpForm").addEventListener("submit", async function (event) {
         event.preventDefault();
-        const name = document.getElementById("signupName").value;
-        const email = document.getElementById("signupEmail").value;
-        const password = document.getElementById("signupPassword").value;
 
-        const userData = { name, email, password };
+        // Get form input values
+        const name = event.target.elements[0].value;
+        const email = event.target.elements[1].value;
+        const password = event.target.elements[2].value;
+
+        // Prepare user data
+        const userData = {
+            name: name,
+            email: email,
+            password: password // Ideally, hash the password before sending
+        };
 
         try {
             const response = await fetch(API_URL, {
@@ -43,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 alert("Sign-up successful! You can now log in.");
-                signUpForm.reset();
+                event.target.reset();
             } else {
                 alert("Error signing up. Try again.");
             }
@@ -53,13 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    loginForm.addEventListener("submit", async function (event) {
+    // LOGIN FORM HANDLING
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
         event.preventDefault();
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
+
+        // Get form input values
+        const email = event.target.elements[0].value;
+        const password = event.target.elements[1].value;
 
         try {
-            const response = await fetch(`${API_URL}?q={"email":"${email}"}`, {
+            const response = await fetch(${API_URL}?q={"email":"${email}"}, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -79,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (user.password === password) {
                 alert("Login successful!");
-                localStorage.setItem("user", JSON.stringify(user));
-                loginForm.reset();
+                localStorage.setItem("user", JSON.stringify(user)); // Store user session
+                event.target.reset();
             } else {
                 alert("Incorrect password. Try again.");
             }
@@ -89,3 +104,4 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("An error occurred.");
         }
     });
+});
