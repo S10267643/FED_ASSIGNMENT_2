@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = event.target.elements[1].value;
 
         try {
-            const response = await fetch(${API_URL}?q={"email":"${email}"}, {
+            const response = await fetch($( API_URL)?q={"email":"${email}"}: {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
