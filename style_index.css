@@ -113,15 +113,6 @@ body {
   border-radius: 4px 0 0 4px;
 }
 
-.language-select {
-  width: 150px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
-}
-
 /* Game Image Container */
 .game-img-container {
   display: flex;
