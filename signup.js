@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const name= document.getElementById("name").value.trim();
         
 
-        if (!email || !password || !passwordConfirm) {
+        if (!email || !password ) {
             alert("Email and Password fields cannot be empty!");
             return;
         }
