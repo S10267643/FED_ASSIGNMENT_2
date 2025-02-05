@@ -31,15 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Cache-Control": "no-cache",
             },
         };
-        const check = await fetch("https://mokesell-536e.restdb.io/rest/users  ", set);
+        const check = await fetch("https://mokesell-536e.restdb.io/rest/accounts", set);
         const data = await check.json();
 
         
 
         const message = {
-            "UserEmail": email,
-            "UserPassword": password,
-            'UserName': name,
+            "email": email,
+            "password": password,
+            'name': name,
             
         };
 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       };
       try{                   
-      let search = await fetch("https://mokesell-536e.restdb.io/rest/users ", settings)
+      let search = await fetch("https://mokesell-536e.restdb.io/rest/accounts  ", settings)
       
       const data = await search.json();
         let check = false;
