@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
     APIKEY="67a057fa417fee624eb30f33";
     
     
-    let login = document.getElementById("login")
+    let loginForm = document.getElementById("login")
     login.addEventListener("submit",  async  function (event){
     event.preventDefault();
     let email = document.getElementById("email").value
