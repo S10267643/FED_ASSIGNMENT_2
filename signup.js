@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 check=true;
                
                 localStorage.setItem("UserEmail",i.email)
-                localStorage.setItem("UserPassword",i.passwd)
+                localStorage.setItem("UserPassword",i.password)
              
                 
                 break;
