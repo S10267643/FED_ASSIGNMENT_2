@@ -298,7 +298,7 @@ body {
 
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-    width: 50%;
+    width: 75%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -385,9 +385,10 @@ body {
   
   .product-grid {
     display: grid;
-    gap: 3rem;
+    gap: 11rem;
     grid-template-columns: repeat(4, 1fr);
     min-height:800px;
+    padding: 20px;
   }
   
   .product-card {
@@ -396,11 +397,12 @@ body {
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.2); /* Adjust the scale factor as needed */
     
   }
   
   .product-card:hover {
-    transform: translateY(-4px);
+    transform: scale(1.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
   
@@ -565,7 +567,11 @@ body {
     .product-content {
       padding: 1.25rem;
     }
+    .product-card{
+      transform: scale(1);
+    }
   }
+    
   
   @media (max-width: 480px) {
     .product-grid {
