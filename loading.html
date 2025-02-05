@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie Redirect</title>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script>
+        // Redirect after 1 second (1000ms)
+        setTimeout(function() {
+            window.location.href = "index.html"; // Change this to your desired page
+        }, 1000);
+    </script>
+</head>
+<body>
+
+    <!-- Lottie Animation -->
+    <dotlottie-player 
+        src="https://lottie.host/3c33752c-1221-4399-beba-ad3afcd3c220/XP1Enzzank.lottie"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px;"
+        loop 
+        autoplay>
+    </dotlottie-player>
+
+</body>
+</html>
