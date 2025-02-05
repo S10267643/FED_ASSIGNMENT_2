@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const message = {
             "UserEmail": email,
             "UserPassword": password,
-            'bio': 'unknown',
-            'avatar': 'unknown',
             'UserName': name,
             
         };
