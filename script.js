@@ -46,5 +46,24 @@ document.getElementById('trendingprevButton').addEventListener('click', function
     });
   });
   
+// This is for the discount container left and right buttons
+document.getElementById('discountprevButton').addEventListener('click', function() {
+    const productGrid = document.querySelector('.product-grid');
+    const width = productGrid.offsetWidth; // Get the width of the container
+    productGrid.scrollBy({
+      left: -width, // Scroll left by the container width
+      behavior: 'smooth'
+    });
+  });
+  
+  document.getElementById('discountnextButton').addEventListener('click', function() {
+    const productGrid = document.querySelector('.product-grid');
+    const width = productGrid.offsetWidth; // Get the width of the container
+    productGrid.scrollBy({
+      left: width, // Scroll right by the container width
+      behavior: 'smooth'
+    });
+  });
+  
 
 
