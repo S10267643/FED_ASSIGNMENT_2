@@ -18,19 +18,6 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
     let password = document.getElementById("acct_password").value;
 
 
-    if (!email || !password ) {
-        alert("Email and Password fields cannot be empty!");
-        return;}
-
-    /* Check password length and if it contains at least one number*/
-    if (password.length < 8 || password.length > 20 || !/\d/.test(password)) {
-        alert("Password must be between 8 and 20 characters long and include at least one number.");
-        return; }
-
-    for (let i of jsondata) {
-        if (i.email === email) {
-        alert("This email has been registered!");
-        return;}}
 
     //[STEP 3]: Get form values when the user clicks on send
     // Adapted from restdb API
@@ -71,7 +58,7 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
 });
 
 
-
+/*
 //login
 document.addEventListener("DOMContentLoaded", function(){
     APIKEY="67a057fa417fee624eb30f33";
@@ -116,4 +103,5 @@ document.addEventListener("DOMContentLoaded", function(){
         alert("Error Occurred during login. Please try again",error)
     }
     })
- })
+ }) 
+    */
