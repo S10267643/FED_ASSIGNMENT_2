@@ -29,7 +29,6 @@ body {
 /* Account Access Button */
 .account-access .btn {
   background-color: white;
-  color: #007bff;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
@@ -38,7 +37,7 @@ body {
 }
 
 .account-access .btn:hover {
-  background-color: #f8f9fa;
+  background-color: #626262;
 }
 
 /* Modal Styling */
