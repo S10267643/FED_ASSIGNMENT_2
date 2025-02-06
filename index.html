@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <title>MokeSell</title>
     <link href="style_index.css" rel="stylesheet" type="text/css" />
-    
     <script src="signup.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="script.js" defer></script>  
   </head>
 
@@ -58,7 +54,7 @@
 
 
                 <form class="loginForm" id="login">
-                  <p>Hace an account? Login here.</p>
+                  <p>Have an account? Login here.</p>
 
                   <input type="text" id="email" placeholder="Email">
                   <input type="text" id="password" placeholder="Password">
@@ -94,9 +90,28 @@
     </section>
 
     <section class="trending-container">
-      
-        
-          
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Repeat product cards here -->
+            <div class="swiper-slide">
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=1080" alt="Premium Headphones">
+                    </div>
+                    <h3 class="product-title">Premium Wireless Headphones</h3>
+                    <div class="product-price">
+                        <span class="current-price">$299.99</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+  
+    
     </section>
 
     <section class="discount-section">
@@ -759,6 +774,23 @@
         
       </div>
     </section>
+
+    <script>
+      // Add carousel functionality here if needed
+      const prevButton = document.querySelector('button[aria-label="Previous products"]');
+      const nextButton = document.querySelector('button[aria-label="Next products"]');
+      const productsContainer = document.querySelector('.products-container');
+      const dots = document.querySelectorAll('.dots-container button');
+      
+      // Add click handlers for navigation
+      prevButton.addEventListener('click', () => {
+        // Handle previous slide
+      });
+      
+      nextButton.addEventListener('click', () => {
+        // Handle next slide
+      });
+    </script>
   </body>
                     
   <footer class="footer">

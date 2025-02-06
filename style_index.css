@@ -113,7 +113,9 @@ body {
   border-radius: 4px 0 0 4px;
 }
 
-
+.h2{
+  size: 50px;
+}
 
 
 
@@ -146,7 +148,6 @@ body {
 
 
 
-
 .trending-section,.discount-section, .foryou-section {
   width: 100%;
   text-align: left;
@@ -155,13 +156,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.trending-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  max-width: 100%;
-}
+
 
 .trending-items {
   display: flex;
@@ -296,13 +291,6 @@ body {
   color: #ccc;
 }
 
-.carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-    width: 75%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-  }
 
   .account-access {
     text-align: center;
@@ -331,6 +319,15 @@ body {
     position: relative;
     text-align: center;
   }
+
+.swiper-container {
+    width: 90%;
+    margin: 20px auto;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
 
   .foryou-container {
     display: flex;
