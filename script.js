@@ -26,6 +26,25 @@ function fetchGameData() {
         })
         .catch(error => console.error('Error fetching game data:', error));
 }
+
+// This is for the trending container left and right buttons
+document.getElementById('trendingprevButton').addEventListener('click', function() {
+    const productGrid = document.querySelector('.product-grid');
+    const width = productGrid.offsetWidth; // Get the width of the container
+    productGrid.scrollBy({
+      left: -width, // Scroll left by the container width
+      behavior: 'smooth'
+    });
+  });
+  
+  document.getElementById('trendingnextButton').addEventListener('click', function() {
+    const productGrid = document.querySelector('.product-grid');
+    const width = productGrid.offsetWidth; // Get the width of the container
+    productGrid.scrollBy({
+      left: width, // Scroll right by the container width
+      behavior: 'smooth'
+    });
+  });
   
 
 
