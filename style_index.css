@@ -77,8 +77,9 @@ body {
 }
 
 .btn-default {
-  background-color: #007bff;
+  background-color: #fefefe;
   color: white;
+  
   padding: 8px 15px;
   border: none;
   cursor: pointer;
