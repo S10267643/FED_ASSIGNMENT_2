@@ -28,42 +28,46 @@ function fetchGameData() {
 }
 
 // This is for the trending container left and right buttons
-document.getElementById('trendingprevButton').addEventListener('click', function() {
-    const productGrid = document.querySelector('.product-grid');
-    const width = productGrid.offsetWidth; // Get the width of the container
-    productGrid.scrollBy({
-      left: -width, // Scroll left by the container width
-      behavior: 'smooth'
-    });
+const trendingContainer = document.querySelector('.trending-product-grid');
+const trendingPrevButton = document.getElementById('trendingprevButton');
+const trendingNextButton = document.getElementById('trendingnextButton'); 
+
+// Scroll left (previous)
+trendingPrevButton.addEventListener('click', () => {
+  trendingContainer.scrollBy({
+    left: -300,
+    behavior: 'smooth'
   });
-  
-  document.getElementById('trendingnextButton').addEventListener('click', function() {
-    const productGrid = document.querySelector('.product-grid');
-    const width = productGrid.offsetWidth; // Get the width of the container
-    productGrid.scrollBy({
-      left: width, // Scroll right by the container width
-      behavior: 'smooth'
-    });
+});
+
+// Scroll right (next)
+trendingNextButton.addEventListener('click', () => {
+  trendingContainer.scrollBy({
+    left: 300,
+    behavior: 'smooth'
   });
+});
   
 // This is for the discount container left and right buttons
-document.getElementById('discountprevButton').addEventListener('click', function() {
-    const productGrid = document.querySelector('.product-grid');
-    const width = productGrid.offsetWidth; // Get the width of the container
-    productGrid.scrollBy({
-      left: -width, // Scroll left by the container width
-      behavior: 'smooth'
-    });
+const discountContainer = document.querySelector('.discount-product-grid');
+const discountPrevButton = document.getElementById('discountprevButton');
+const discountNextButton = document.getElementById('discountnextButton'); 
+
+// Scroll left (previous)
+discountPrevButton.addEventListener('click', () => {
+  discountContainer.scrollBy({
+    left: -300, 
+    behavior: 'smooth'
   });
-  
-  document.getElementById('discountnextButton').addEventListener('click', function() {
-    const productGrid = document.querySelector('.product-grid');
-    const width = productGrid.offsetWidth; // Get the width of the container
-    productGrid.scrollBy({
-      left: width, // Scroll right by the container width
-      behavior: 'smooth'
-    });
+});
+
+// Scroll right (next)
+discountNextButton.addEventListener('click', () => {
+  discountContainer.scrollBy({
+    left: 300, 
+    behavior: 'smooth'
   });
+});
   
 
 

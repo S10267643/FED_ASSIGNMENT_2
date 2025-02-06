@@ -322,6 +322,7 @@ body {
 
   .trending-container {
     display: flex;
+    transform: s;
     justify-content: space-between;
     align-items: center;
     max-width: 1000px;
@@ -343,11 +344,11 @@ body {
   }
   
   .trendingprev-button {
-    left: 0;
+    left: 10px;
   }
   
   .trendingnext-button {
-    right: 0;
+    right: 10px;
   }
   
   .trendingprev-button svg, .trendingnext-button svg {
@@ -361,13 +362,39 @@ body {
     background: rgba(0, 0, 0, 0.1);
   }
 
+  .trending-product-grid {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .trending-product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Prevent cards from shrinking */
+  }
+
+  .trending-product-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .trending-product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+
   .discount-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1000px;
     margin: 3rem auto;
     padding: 0 1.5rem;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust space between items */
+    position: relative;
   }
 
   .discountprev-button, .discountnext-button {
@@ -383,11 +410,11 @@ body {
   }
   
   .discountprev-button {
-    left: 0;
+    left: 10px;
   }
   
   .discountnext-button {
-    right: 0;
+    right: 10px;
   }
   
   .discountprev-button svg, .discountnext-button svg {
@@ -399,6 +426,31 @@ body {
   /* Add hover effect */
   .discountprev-button:hover, .discountnext-button:hover {
     background: rgba(0, 0, 0, 0.1);
+  }
+
+  .discount-product-grid {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .discount-product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Prevent cards from shrinking */
+  }
+
+  .discount-product-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .discount-product-card:hover .product-image {
+    transform: scale(1.05);
   }
 
   .foryou-container {
