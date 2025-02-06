@@ -7,9 +7,9 @@
     <title>MokeSell</title>
     <link href="style_index.css" rel="stylesheet" type="text/css" />
     
-    <link href="signup.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="signup.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="script.js" defer></script>  
   </head>
@@ -41,27 +41,29 @@
                 <form id="signup">
                   <div>
                     <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Name">
+                    <input type="text" id="acct_name" placeholder="Name">
                   </div>
                   <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" placeholder="Email">
+                    <input type="text" id="acct_email" placeholder="Email">
                   </div>
                   <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Password">
+                    <input type="password" id="acct_password" placeholder="Password">
                   </div>
         
-                  <button type="submit" id="submit">Signup</button>
+                  <button type="submit" id="acct_submit">Signup</button>
                 </form>
 
 
-                <section class="loginForm" id="login">
+
+                <form class="loginForm" id="login">
                   <p>Hace an account? Login here.</p>
+
                   <input type="text" id="email" placeholder="Email">
-                  <input type="text" id="passwordd" placeholder="Password">
+                  <input type="text" id="password" placeholder="Password">
                   <button type="button" class="loginbtn">Login</button>
-                </section>
+                </form>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
