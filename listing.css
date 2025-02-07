@@ -1,0 +1,36 @@
+.listing-details {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.listing-details img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.chat-section {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+}
+
+#chat-box {
+    min-height: 100px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+#chat-input {
+    width: 80%;
+    padding: 8px;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
