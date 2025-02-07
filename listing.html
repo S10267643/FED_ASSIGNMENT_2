@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Details</title>
-    <link href="listing.css">
+    <link href="listing.css" rel="stylesheet" type="text/css"/>
+   
 </head>
 <body>
+    <button class="back-button" onclick="goBack()">&#8592; Back</button> 
+
     <main>
         <section class="listing-details">
-            <img id="listing-img" src="" alt="Listing Image">
+            <img id="listing-img" alt="Listing Image">
             <div class="info">
                 <h1 id="listing-name"></h1>
                 <p id="listing-desc"></p>
@@ -25,7 +28,13 @@
             <button onclick="sendMessage()">Send</button>
         </section>
     </main>
-    
-    <script src="listings.js"></script>
+
+    <script src="listing.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = "index.html"; // Redirect to homepage
+        }
+    </script>
 </body>
+
 </html>

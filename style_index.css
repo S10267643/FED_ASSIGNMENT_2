@@ -104,6 +104,19 @@ button:hover {
 
 
 /* Top Bar */
+header {
+  display: flex;
+  justify-content: space-between; /* Separate logo and navigation */
+  align-items: center; /* Align items vertically */
+  
+
+  position: fixed; /* Fix the header at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width of the page */
+
+  z-index: 1000; /* Ensure it stays above other content */
+}
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -154,6 +167,7 @@ button:hover {
   align-items: center;
   height: 55vh;
   background-color: #87e1ff;
+  margin-top: 100px;
 }
 
 .game-img-container img {

@@ -1,7 +1,39 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Listing Details */
 .listing-details {
     display: flex;
-    gap: 20px;
     align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
 }
 
 .listing-details img {
@@ -10,10 +42,33 @@
     border-radius: 10px;
 }
 
+.info {
+    flex: 1;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#listing-desc {
+    font-size: 16px;
+    color: #555;
+}
+
+#listing-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Chat Section */
 .chat-section {
     margin-top: 20px;
-    padding: 10px;
-    border-top: 2px solid #ddd;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #chat-box {
@@ -23,14 +78,27 @@
     overflow-y: auto;
     max-height: 200px;
     margin-bottom: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
 }
 
 #chat-input {
     width: 80%;
     padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
     padding: 8px 15px;
     cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

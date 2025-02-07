@@ -1,13 +1,39 @@
 const API_KEY = "67a057fa417fee624eb30f33";
 const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
+// Function to generate a random unique ID
+function generateUniqueID() {
+    return 'listing-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Function to get or assign an ID for each listing
+function getListingID(listing) {
+    // Load stored IDs from localStorage
+    let storedIDs = JSON.parse(localStorage.getItem("listingIDs")) || {};
+
+    // If listing already has an ID, return it
+    if (storedIDs[listing['listing-name']]) {
+        return storedIDs[listing['listing-name']];
+    }
+
+    // Otherwise, assign a new ID
+    const newID = generateUniqueID();
+    storedIDs[listing['listing-name']] = newID;
+
+    // Save updated IDs to localStorage
+    localStorage.setItem("listingIDs", JSON.stringify(storedIDs));
+
+    return newID;
+}
+
+// Fetch and display listings
 async function fetchListings() {
     try {
         const response = await fetch(API_URL, {
             headers: { "x-apikey": API_KEY }
         });
-        const data = await response.json();
-        displayListings(data);
+        const listings = await response.json();
+        displayListings(listings);
     } catch (error) {
         console.error("Error fetching listings:", error);
     }
@@ -20,12 +46,16 @@ function displayListings(listings) {
     let trendingCount = 0;
     let forYouCount = 0;
 
-    // Shuffle listings randomly
     const shuffledListings = listings.sort(() => Math.random() - 0.5);
 
     shuffledListings.forEach(listing => {
         const card = document.createElement("div");
         card.classList.add("listing-card");
+
+        // Assign or get unique ID
+        const listingID = getListingID(listing);
+
+        card.setAttribute("data-id", listingID);
 
         card.innerHTML = `
             <img src="${listing.img}" alt="${listing['listing-name']}">
@@ -36,75 +66,21 @@ function displayListings(listings) {
             </div>
         `;
 
-        // Assign to Trending (Max 10 items)
+        // Add click event to navigate to listing page with the unique ID
+        card.addEventListener("click", function () {
+            window.location.href = `listing.html?id=${listingID}`;
+        });
+
+        // Assign listings to Trending or For You
         if (trendingCount < 10) {
             trendingContainer.appendChild(card);
             trendingCount++;
-        } 
-        // Assign to For You (Max 20 items)
-        else if (forYouCount < 20) {
+        } else if (forYouCount < 20) {
             forYouContainer.appendChild(card);
             forYouCount++;
         }
     });
 }
 
-// Trending Side Scroll Function
-function scrollTrending(direction) {
-    const container = document.querySelector(".trending");
-    const scrollAmount = 270 * 5; // Adjust for card width
-    container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
-}
-
 // Load Listings on Page Load
 document.addEventListener("DOMContentLoaded", fetchListings);
-
-
-
-
-
-/*
-// Get Listing ID from URL
-const urlParams = new URLSearchParams(window.location.search);
-const listingId = urlParams.get("id");
-
-// Fetch and Display Listing Details
-async function fetchListingDetails() {
-    if (!listingId) {
-        document.body.innerHTML = "<h2>Listing Not Found</h2>";
-        return;
-    }
-
-    try {
-        const response = await fetch(`${API_URL}/${listingId}`, {
-            headers: { "x-apikey": API_KEY }
-        });
-        const listing = await response.json();
-
-        document.getElementById("listing-img").src = listing.img;
-        document.getElementById("listing-name").textContent = listing["listing-name"];
-        document.getElementById("listing-desc").textContent = listing.desc;
-        document.getElementById("listing-price").textContent = `$${listing.price}`;
-    } catch (error) {
-        console.error("Error fetching listing details:", error);
-        document.body.innerHTML = "<h2>Failed to load listing</h2>";
-    }
-}
-
-// Chat Functionality
-function sendMessage() {
-    const chatBox = document.getElementById("chat-box");
-    const chatInput = document.getElementById("chat-input");
-
-    if (chatInput.value.trim() !== "") {
-        const message = document.createElement("p");
-        message.textContent = chatInput.value;
-        chatBox.appendChild(message);
-        chatInput.value = "";
-    }
-}
-
-// Load Listing on Page Load
-document.addEventListener("DOMContentLoaded", fetchListingDetails); 
-
-*/
