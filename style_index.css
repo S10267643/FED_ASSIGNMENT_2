@@ -160,54 +160,6 @@ body {
 }
 
 
-
-.trending-items {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  white-space: nowrap;
-  gap: 10px;
-  padding: 10px;
-}
-
-.trending-items::-webkit-scrollbar {
-  display: none;
-}
-
-.item {
-  min-width: 150px;
-  background: #f8f8f8;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.item img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.scroll-btn {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
-}
-
-#scroll-left {
-  left: 0;
-}
-
-#scroll-right {
-  right: 0;
-}
-
 /* Footer Styles */
 .footer {
   background-color: #333;
@@ -328,7 +280,7 @@ body {
     transform: s;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     position: relative;
@@ -394,7 +346,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     position: relative;
@@ -485,7 +437,7 @@ body {
   }
 
   .foryou-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 0 1.5rem;
   }
@@ -521,7 +473,6 @@ body {
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform: scale(1.2);
   }
   
   .product-card:hover {
