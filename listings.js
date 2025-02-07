@@ -1,8 +1,5 @@
-
-
 const API_KEY = "67a057fa417fee624eb30f33";
 const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
-const MEDIA_URL = "https://mokesell-536e.restdb.io/media/";
 
 async function fetchListings() {
     try {
@@ -30,11 +27,8 @@ function displayListings(listings) {
         const card = document.createElement("div");
         card.classList.add("listing-card");
 
-        // Get correct image URL
-        const imageUrl = listing.img ? `${MEDIA_URL}${listing.img}` : "placeholder.jpg";
-
         card.innerHTML = `
-            <img src="${imageUrl}" alt="${listing['listing-name']}">
+            <img src="${listing.img}" alt="${listing['listing-name']}">
             <div class="details">
                 <h3>${listing['listing-name']}</h3>
                 <p>${listing.desc}</p>
@@ -53,6 +47,13 @@ function displayListings(listings) {
             forYouCount++;
         }
     });
+}
+
+// Trending Side Scroll Function
+function scrollTrending(direction) {
+    const container = document.querySelector(".trending");
+    const scrollAmount = 270 * 5; // Adjust for card width
+    container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
 }
 
 // Load Listings on Page Load
