@@ -105,5 +105,6 @@ function sendMessage() {
 }
 
 // Load Listing on Page Load
-document.addEventListener("DOMContentLoaded", fetchListingDetails); */
+document.addEventListener("DOMContentLoaded", fetchListingDetails); 
 
+*/
