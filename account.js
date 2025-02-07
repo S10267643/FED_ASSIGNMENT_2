@@ -13,17 +13,21 @@ document.getElementById('imageUpload').addEventListener('change', function(event
 // Navigation
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Remove active class from all nav items and sections
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        
-        // Add active class to clicked nav item
-        item.classList.add('active');
-        
-        // Show corresponding section
-        const sectionId = item.getAttribute('href').substring(1);
-        document.getElementById(sectionId).classList.add('active');
+        // Prevent default only if the link is an internal section link
+        if (!item.getAttribute('href').includes('.html')) {
+            e.preventDefault();
+            
+            // Remove active class from all nav items and sections
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            
+            // Add active class to clicked nav item
+            item.classList.add('active');
+            
+            // Show corresponding section
+            const sectionId = item.getAttribute('href').substring(1);
+            document.getElementById(sectionId).classList.add('active');
+        }
     });
 });
 
