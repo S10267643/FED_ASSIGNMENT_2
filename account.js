@@ -109,10 +109,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(e) {
 });
 
 // Handle logout
-document.querySelector('.logout').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (confirm('Are you sure you want to logout?')) {
-        // Add your logout logic here
-        console.log('Logging out...');
-    }
+document.getElementById("logout").addEventListener("click", function () {
+    localStorage.clear(); // Remove stored user data
+    window.location.href = "loading.html"; // Redirect to home page
 });
