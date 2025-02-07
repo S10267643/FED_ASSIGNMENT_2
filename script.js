@@ -1,6 +1,5 @@
 
   // Game files
-
   function startGame() {
     // Fetch a game image from the backend
     fetch('Catch-The-Beat-Java--master/') // Replace with your backend endpoint
