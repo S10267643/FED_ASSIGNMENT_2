@@ -302,7 +302,7 @@ button:hover {
     transform: s;
     justify-content: space-between;
     align-items: center;
-    max-width: 2000px;
+    max-width: 1400px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     position: relative;
@@ -368,7 +368,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 2000px;
+    max-width: 1400px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     position: relative;
