@@ -93,8 +93,10 @@ function displayListings(listings) {
         `;
 
         card.addEventListener("click", function () {
+            // Redirect to listing.html with correct ID in the URL
             window.location.href = `listing.html?id=${listing._id}`;
         });
+        
 
         listingsContainer.appendChild(card);
     });
