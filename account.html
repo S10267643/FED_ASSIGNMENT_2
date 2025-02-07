@@ -1,67 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MokeSell Account</title>
-    <link href="account-style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js" defer></script>  
-    <script src="login.js"></script>
-    <script src="signup.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="account.js" defer></script>
+</head>
+<body>
+    <div class="min-h-screen">
+        <div class="container">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-content">
+                        <h2 class="sidebar-title">My Account</h2>
+                        <nav class="sidebar-nav">
+                            <a href="#profile" class="nav-item active">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#listings" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                                <span>My Listings</span>
+                            </a>
+                            <a href="#chat" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                <span>Messages</span>
+                                <span class="message-badge">2</span>
+                            </a>
+                            <a href="#points" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+                                <span>Points</span>
+                            </a>
+                            <a href="#orders" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>Order History</span>
+                            </a>
+                            <a href="#settings" class="nav-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#logout" class="nav-item logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                                <span>Logout</span>
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
 
-  </head>
-  <body>
-    <div class="account-container">
-      <aside class="sidebar">
-          <h2>My Account</h2>
-          <ul>
-              <li><a href="#profile">Profile</a></li>
-              <li><a href="#points">Points</a></li>
-              <li><a href="#orders">Order History</a></li>
-              <li><a href="#settings">Settings</a></li>
-              <li><a href="#logout" id="logout">Logout</a></li>
-          </ul>
-      </aside>
-      <main class="account-content">
-          <section id="profile" class="section">
-              <h2>Profile</h2>
-              <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
-              <p><strong>Username:</strong> John Doe</p>
-              <p><strong>Email:</strong> john@example.com</p>
-              <input type="file" id="profilePicture" accept="image/*">
-              <button>Change Profile Picture</button>
-              <button>Edit Profile</button>
-          </section>
+                <!-- Main Content -->
+                <main class="main-content">
+                    <div class="content-wrapper">
+                        <!-- Profile Section -->
+                        <section id="profile" class="section active">
+                            <h2 class="section-title">Profile</h2>
+                            <div class="profile-content">
+                                <div class="profile-image-container">
+                                    <img id="profileImage" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile" class="profile-image">
+                                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                                    <button class="upload-button" onclick="document.getElementById('imageUpload').click()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    </button>
+                                </div>
+                                <div class="profile-info">
+                                    <h3 class="profile-name">John Doe</h3>
+                                    <p class="profile-email">john@example.com</p>
+                                </div>
+                                <button class="edit-profile-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                                    Edit Profile
+                                </button>
+                            </div>
+                        </section>
 
-          <section id="points" class="section">
-            <h2>Points</h2>
-            <ul>
-                <li>MokePoints</li>
-                <li>Vouchers</li>
-            </ul>
-          </section>
+                        <!-- Listings Section -->
+                        <section id="listings" class="section">
+                            <div class="listings-header">
+                                <h2 class="section-title">My Listings</h2>
+                                <button class="new-listing-button" onclick="openNewListingModal()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    New Listing
+                                </button>
+                            </div>
+                            <div class="listings-grid">
+                                <div class="listing-card">
+                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product" class="listing-image">
+                                    <div class="listing-content">
+                                        <h3>Vintage Watch</h3>
+                                        <p class="listing-price">$299.99</p>
+                                        <p class="listing-status active">Active</p>
+                                        <div class="listing-actions">
+                                            <button class="edit-listing">Edit</button>
+                                            <button class="delete-listing">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="listing-card">
+                                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Product" class="listing-image">
+                                    <div class="listing-content">
+                                        <h3>Red Sneakers</h3>
+                                        <p class="listing-price">$89.99</p>
+                                        <p class="listing-status pending">Pending</p>
+                                        <div class="listing-actions">
+                                            <button class="edit-listing">Edit</button>
+                                            <button class="delete-listing">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
-          <section id="orders" class="section">
-              <h2>Order History</h2>
-              <ul>
-                  <li>Order #12345 - $50.00 - Delivered</li>
-                  <li>Order #12346 - $30.00 - In Progress</li>
-              </ul>
-          </section>
-          <section id="settings" class="section">
-              <h2>Settings</h2>
-              <button>Change Password</button>
-              <button>Manage Addresses</button>
-          </section>
-      </main>
-  </div>
-    <script>
-        document.getElementById("logout").addEventListener("click", function () {
-            localStorage.clear(); // Remove stored user data
-            window.location.href = "loading.html"; // Redirect to home page
-        });
-    </script>
+                        <!-- Chat Section -->
+                        <section id="chat" class="section">
+                            <h2 class="section-title">Messages</h2>
+                            <div class="chat-container">
+                                <div class="chat-sidebar">
+                                    <div class="chat-search">
+                                        <input type="text" placeholder="Search messages..." class="chat-search-input">
+                                    </div>
+                                    <div class="chat-list">
+                                        <div class="chat-item active">
+                                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="User" class="chat-avatar">
+                                            <div class="chat-info">
+                                                <h4>Alice Cooper</h4>
+                                                <p>Is the watch still available?</p>
+                                            </div>
+                                            <span class="chat-time">2m</span>
+                                        </div>
+                                        <div class="chat-item">
+                                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" alt="User" class="chat-avatar">
+                                            <div class="chat-info">
+                                                <h4>Bob Wilson</h4>
+                                                <p>Thanks for the quick delivery!</p>
+                                            </div>
+                                            <span class="chat-time">1h</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-main">
+                                    <div class="chat-header">
+                                        <div class="chat-user-info">
+                                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="User" class="chat-avatar">
+                                            <div>
+                                                <h4>Alice Cooper</h4>
+                                                <p class="chat-status">Online</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat-messages" id="chatMessages">
+                                        <div class="message received">
+                                            <p>Hi! Is the vintage watch still available?</p>
+                                            <span class="message-time">10:30 AM</span>
+                                        </div>
+                                        <div class="message sent">
+                                            <p>Yes, it's still available! Are you interested?</p>
+                                            <span class="message-time">10:31 AM</span>
+                                        </div>
+                                        <div class="message received">
+                                            <p>Great! Could you tell me more about its condition?</p>
+                                            <span class="message-time">10:32 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-container">
+                                        <input type="text" id="messageInput" placeholder="Type a message..." class="chat-input">
+                                        <button class="send-message" onclick="sendMessage()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
-  </body>
+                        <!-- Points Section -->
+                        <section id="points" class="section">
+                            <h2 class="section-title">Points & Rewards</h2>
+                            <div class="points-grid">
+                                <div class="points-card blue-gradient">
+                                    <h3>MokePoints</h3>
+                                    <p class="points-value">100</p>
+                                    <p class="points-label">Available points</p>
+                                </div>
+                                <div class="points-card purple-gradient">
+                                    <h3>Vouchers</h3>
+                                    <p class="points-value">50</p>
+                                    <p class="points-label">Active vouchers</p>
+                                </div>
+                            </div>
+                        </section>
 
-  
+                        <!-- Orders Section -->
+                        <section id="orders" class="section">
+                            <h2 class="section-title">Order History</h2>
+                            <div class="orders-list">
+                                <div class="order-item">
+                                    <div class="order-info">
+                                        <p class="order-id">Order #12345</p>
+                                        <p class="order-date">2024-02-20</p>
+                                    </div>
+                                    <div class="order-details">
+                                        <span class="order-amount">$50.00</span>
+                                        <span class="order-status delivered">Delivered</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                    </div>
+                                </div>
+                                <div class="order-item">
+                                    <div class="order-info">
+                                        <p class="order-id">Order #12346</p>
+                                        <p class="order-date">2024-02-18</p>
+                                    </div>
+                                    <div class="order-details">
+                                        <span class="order-amount">$30.00</span>
+                                        <span class="order-status in-progress">In Progress</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Settings Section -->
+                        <section id="settings" class="section">
+                            <h2 class="section-title">Settings</h2>
+                            <div class="settings-options">
+                                <button class="settings-button" onclick="openPasswordModal()">
+                                    <div class="settings-button-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                                        <span>Change Password</span>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                </button>
+                                <button class="settings-button">
+                                    <div class="settings-button-content">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                        <span>Manage Addresses</span>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                </button>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Listing Modal -->
+    <div id="newListingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Listing</h3>
+                <button class="close-modal" onclick="closeNewListingModal()">&times;</button>
+            </div>
+            <form id="newListingForm" class="modal-form">
+                <div class="form-group">
+                    <label for="listingTitle">Title</label>
+                    <input type="text" id="listingTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="listingPrice">Price</label>
+                    <input type="number" id="listingPrice" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="listingDescription">Description</label>
+                    <textarea id="listingDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="listingImages">Images</label>
+                    <input type="file" id="listingImages" accept="image/*" multiple>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" onclick="closeNewListingModal()">Cancel</button>
+                    <button type="submit" class="primary-button">Create Listing</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="close-modal" onclick="closePasswordModal()">&times;</button>
+            </div>
+            <form id="passwordForm" class="modal-form">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="secondary-button" onclick="closePasswordModal()">Cancel</button>
+                    <button type="submit" class="primary-button">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
