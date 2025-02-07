@@ -4,9 +4,7 @@ const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 async function fetchListings() {
     try {
         const response = await fetch(API_URL, {
-            headers: {
-                "x-apikey": API_KEY
-            }
+            headers: { "x-apikey": API_KEY }
         });
         const data = await response.json();
         displayListings(data);
@@ -15,11 +13,12 @@ async function fetchListings() {
     }
 }
 
-function displayListings(listings) {
-    const trendingContainer = document.getElementById("trending-listings");
-    const discountedContainer = document.getElementById("discounted-listings");
-    const forYouContainer = document.getElementById("foryou-listings");
+function getRandomCategory() {
+    const categories = ["trending-listings", "foryou-listings"];
+    return categories[Math.floor(Math.random() * categories.length)];
+}
 
+function displayListings(listings) {
     listings.forEach(listing => {
         const card = document.createElement("section");
         card.classList.add("listing-card");
@@ -33,14 +32,9 @@ function displayListings(listings) {
             </div>
         `;
 
-        // Categorizing Listings
-        if (listing.category === "Trending") {
-            trendingContainer.appendChild(card);
-        } else if (listing.category === "Discounted") {
-            discountedContainer.appendChild(card);
-        } else {
-            forYouContainer.appendChild(card);
-        }
+        // Assign the listing to a random section
+        const randomSection = document.getElementById(getRandomCategory());
+        randomSection.appendChild(card);
     });
 }
 
