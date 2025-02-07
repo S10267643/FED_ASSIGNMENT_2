@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", fetchListings);
 
 
 
-
+/*
 // Get Listing ID from URL
 const urlParams = new URLSearchParams(window.location.search);
 const listingId = urlParams.get("id");
@@ -105,4 +105,5 @@ function sendMessage() {
 }
 
 // Load Listing on Page Load
-document.addEventListener("DOMContentLoaded", fetchListingDetails);
+document.addEventListener("DOMContentLoaded", fetchListingDetails); */
+
