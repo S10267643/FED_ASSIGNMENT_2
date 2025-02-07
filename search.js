@@ -5,7 +5,43 @@ const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 // Get search query from URL
 const urlParams = new URLSearchParams(window.location.search);
 const searchQuery = urlParams.get("query") ? urlParams.get("query").toLowerCase() : "";
+const listingId = urlParams.get("id");
 
+
+
+
+function generateUniqueID() {
+    return 'listing-' + Math.random().toString(36).substr(2, 9);
+}
+
+// Function to get or assign an ID for each listing
+function getListingID(listing) {
+    // Load stored IDs from localStorage
+    let storedIDs = JSON.parse(localStorage.getItem("listingIDs")) || {};
+
+    // If listing already has an ID, return it
+    if (storedIDs[listing['listing-name']]) {
+        return storedIDs[listing['listing-name']];
+    }
+
+    // Otherwise, assign a new ID
+    const newID = generateUniqueID();
+    storedIDs[listing['listing-name']] = newID;
+
+    // Save updated IDs to localStorage
+    localStorage.setItem("listingIDs", JSON.stringify(storedIDs));
+
+    return newID;
+}
+
+
+
+
+
+
+
+// Retrieve stored IDs to find the correct listing
+const storedIDs = JSON.parse(localStorage.getItem("listingIDs")) || {};
 // Fetch and filter listings
 async function fetchSearchResults() {
     try {
@@ -66,3 +102,6 @@ function displayListings(listings) {
 
 // Load search results on page load
 document.addEventListener("DOMContentLoaded", fetchSearchResults);
+
+
+
