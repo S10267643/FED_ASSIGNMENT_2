@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width">
     <title>MokeSell</title>
     <link href="style_index.css" rel="stylesheet" type="text/css" />
-    <script src="login.js"></script>
-    <script src="signup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="script.js" defer></script>  
+    <script src="login.js"></script>
+    <script src="signup.js"></script>
   </head>
 
 
@@ -35,6 +35,7 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
+                  <p class="intro">Welcome to MokeSell</p>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -61,12 +62,16 @@
 
                   <p>Have an account? Login here.</p>
                   <div>
+                    <label for="username">Name</label>
+                    <input type="text" id="username" placeholder="Username">
+                  </div>
+                  <div>
                     <label for="email">Email</label>
                     <input type="text" id="email" placeholder="Email">
                   </div>
                   <div>
                     <label for="password">Password</label>
-                    <input type="text" id="password" placeholder="Password">
+                    <input type="password" id="password" placeholder="Password">
                   </div>
                   
                   <button type="l_submit" id="submit">Login</button>
