@@ -1,0 +1,68 @@
+
+const API_KEY = "67a057fa417fee624eb30f33";
+const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
+
+// Get search query from URL
+const urlParams = new URLSearchParams(window.location.search);
+const searchQuery = urlParams.get("query") ? urlParams.get("query").toLowerCase() : "";
+
+// Fetch and filter listings
+async function fetchSearchResults() {
+    try {
+        const response = await fetch(API_URL, {
+            headers: { "x-apikey": API_KEY }
+        });
+        const listings = await response.json();
+
+        // Filter listings based on the search query
+        const filteredListings = listings.filter(listing =>
+            listing["listing-name"].toLowerCase().includes(searchQuery)
+        );
+
+        displayListings(filteredListings);
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+    }
+}
+
+// Display listings in the search results page
+function displayListings(listings) {
+    const listingsContainer = document.getElementById("search-results");
+    const resultsCount = document.getElementById("search-results-count");
+    const noResultsMessage = document.getElementById("no-results");
+
+    listingsContainer.innerHTML = ""; // Clear previous listings
+
+    if (listings.length === 0) {
+        noResultsMessage.style.display = "block";
+        resultsCount.textContent = "0 listings found.";
+        return;
+    } else {
+        noResultsMessage.style.display = "none";
+    }
+
+    resultsCount.textContent = `${listings.length} listing(s) found.`;
+
+    listings.forEach(listing => {
+        const card = document.createElement("div");
+        card.classList.add("listing-card");
+
+        card.innerHTML = `
+            <img src="${listing.img}" alt="${listing['listing-name']}">
+            <div class="details">
+                <h3>${listing['listing-name']}</h3>
+                <p>${listing.desc}</p>
+                <p class="price">$${listing.price}</p>
+            </div>
+        `;
+
+        card.addEventListener("click", function () {
+            window.location.href = `listing.html?id=${listing._id}`;
+        });
+
+        listingsContainer.appendChild(card);
+    });
+}
+
+// Load search results on page load
+document.addEventListener("DOMContentLoaded", fetchSearchResults);

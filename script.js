@@ -1,3 +1,14 @@
+// search function
+document.getElementById("search-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const searchTerm = document.getElementById("search-input").value.trim();
+
+  if (searchTerm) {
+      window.location.href = `search.html?query=${encodeURIComponent(searchTerm)}`;
+  }
+});
+
 
   // Game files
   function startGame() {
