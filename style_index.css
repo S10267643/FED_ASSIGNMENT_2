@@ -147,17 +147,25 @@ position: fixed;
 
 
 .carousel-inner {
-  height: 600px; /* Set a fixed height */
+  height: 600px; /* Fixed height for consistency */
 }
 
-.carousel-inner > .item > img {
-  width: 80%;
-  height: 80%;
+.carousel-inner .item {
+  height: 100%; /* Ensures each slide takes up full height */
+}
+
+.carousel-inner .item img {
+  width: 100%; /* Ensure images take up full width */
+  height: 100%; /* Ensure images take up full height */
   object-fit: cover; /* Ensures images fill the space without distortion */
 }
 
+.news-container {
+  display: flex;
+  justify-content: center;
+  margin: 5rem;
 
-
+} 
 
 
 /* listings */
