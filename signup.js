@@ -51,9 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("acct_submit").disabled = false; // Re-enable button
       }
   });
+});
 
 
   // Login event listener
+const APIKEY = "67a057fa417fee624eb30f33";
+
   document.getElementById("login").addEventListener("submit", async function (event) {
       event.preventDefault();
 
@@ -113,5 +116,5 @@ document.addEventListener("DOMContentLoaded", function () {
   if (loggedInUser) {
       updateAccountButton(loggedInUser);
   }
-});
+
 
