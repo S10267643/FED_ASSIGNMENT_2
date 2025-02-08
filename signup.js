@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const APIKEY = "67a057fa417fee624eb30f33";
+  const APIKEY = "67a7acd693d83b6c60235224";
 
   document.getElementById("signup").addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // Login event listener
-const APIKEY = "67a057fa417fee624eb30f33";
+const APIKEY = "67a7acd693d83b6c60235224";
 
   document.getElementById("login").addEventListener("submit", async function (event) {
       event.preventDefault();

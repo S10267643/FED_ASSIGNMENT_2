@@ -1,4 +1,4 @@
-const API_KEY = "67a057fa417fee624eb30f33";
+const API_KEY = "67a7acd693d83b6c60235224";
 const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
 // Function to generate a random unique ID

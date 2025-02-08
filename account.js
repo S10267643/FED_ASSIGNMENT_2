@@ -96,7 +96,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 
 
     // API request to add new listing to database
-    const API_KEY = "67a057fa417fee624eb30f33";
+    const API_KEY = "67a7acd693d83b6c60235224";
     const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
     
     const settings = {
@@ -134,7 +134,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 
 
 
-const API_KEY = "67a057fa417fee624eb30f33";
+const API_KEY = "67a7acd693d83b6c60235224";
 const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
 // Fetch and display listings
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const APIKEY = "67a057fa417fee624eb30f33";
+    const APIKEY = "67a7acd693d83b6c60235224";
     const API_URL = "https://mokesell-536e.restdb.io/rest/accounts";
     
     // Get the logged-in username from localStorage
