@@ -1,86 +1,68 @@
-
-
-
-//signup 
 document.addEventListener("DOMContentLoaded", function () {
-    const APIKEY = "67a057fa417fee624eb30f33";
+  const APIKEY = "67a057fa417fee624eb30f33";
 
-//[STEP 1]: Create our submit form listener
-document.getElementById("acct_submit").addEventListener("click", function (e) {
-    // Prevent default action of the button 
-    e.preventDefault();
+  document.getElementById("signup").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    //[STEP 2]: Let's retrieve form data
-    // For now, we assume all information is valid
-    // You are to do your own data validation
-    let username = document.getElementById("acct_name").value;
-    let email = document.getElementById("acct_email").value;
-    let password = document.getElementById("acct_password").value;
+      // Get form data
+      let username = document.getElementById("acct_name").value.trim();
+      let email = document.getElementById("acct_email").value.trim();
+      let password = document.getElementById("acct_password").value.trim();
 
-
-
-    //[STEP 3]: Get form values when the user clicks on send
-    // Adapted from restdb API
-    let jsondata = {
-      "email": email,
-      "username": username,
-      "password": password
-    };
-
-    //[STEP 4]: Create our AJAX settings. Take note of API key
-    let settings = {
-      method: "POST", //[cher] we will use post to send info
-      headers: {
-        "Content-Type": "application/json",
-        "x-apikey": APIKEY,
-        "Cache-Control": "no-cache"
-      },
-      body: JSON.stringify(jsondata),
-      beforeSend: function () {
-        //@TODO use loading bar instead
-        // Disable our button or show loading bar
-        document.getElementById("acct_submit").disabled = true;
-        // Clear our form using the form ID and triggering its reset feature
-        
+      if (!username || !email || !password) {
+          alert("All fields are required!");
+          return;
       }
-    }
 
-    //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-    fetch("https://mokesell-536e.restdb.io/rest/accounts", settings)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        document.getElementById("acct_submit").disabled = false;
-        document.getElementById("signup").reset();
-        alert("Account created successfully. Please log in.")
-      });
-      
-  });//end click 
+      let jsondata = {
+          "username": username,
+          "email": email,
+          "password": password
+      };
 
-});
+      let settings = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "x-apikey": APIKEY,
+              "Cache-Control": "no-cache"
+          },
+          body: JSON.stringify(jsondata)
+      };
+
+      try {
+          document.getElementById("acct_submit").disabled = true; // Disable button while processing
+
+          let response = await fetch("https://mokesell-536e.restdb.io/rest/accounts", settings);
+
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          let data = await response.json();
+          console.log("Signup Response:", data);
+
+          alert("Account created successfully! Please log in.");
+          document.getElementById("signup").reset(); // Reset form
+      } catch (error) {
+          console.error("Signup Error:", error);
+          alert("Error signing up. Check the console for more details.");
+      } finally {
+          document.getElementById("acct_submit").disabled = false; // Re-enable button
+      }
+  });
 
 
-
-//login 
-document.addEventListener("DOMContentLoaded", function () {
-  APIKEY = "67a057fa417fee624eb30f33";
-  let login = document.getElementById("login");
-  let accountBtn = document.querySelector(".btn-info"); // Selects the Account button
-
-  // Check if user is already logged in
-  let loggedInUser = localStorage.getItem("username");
-  if (loggedInUser) {
-      updateAccountButton(loggedInUser);
-  }
-
-  login.addEventListener("submit", async function (event) {
+  // Login event listener
+  document.getElementById("login").addEventListener("submit", async function (event) {
       event.preventDefault();
-      let username = document.getElementById("username").value;
-      let email = document.getElementById("email").value;
-      let password = document.getElementById("password").value;
 
-      if (!email || !password || !username) {
-          alert("Email and Password and Username cannot be empty!");
+      let username = document.getElementById("username").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      if (!username || !email || !password) {
+          alert("All fields are required!");
           return;
       }
 
@@ -89,43 +71,47 @@ document.addEventListener("DOMContentLoaded", function () {
           headers: {
               "Content-Type": "application/json",
               "x-apikey": APIKEY,
-              "Cache-Control": "no-cache",
+              "Cache-Control": "no-cache"
           }
       };
 
       try {
-          let search = await fetch("https://mokesell-536e.restdb.io/rest/accounts", settings);
-          const data = await search.json();
-          let check = false;
+          let response = await fetch("https://mokesell-536e.restdb.io/rest/accounts", settings);
+          let users = await response.json();
+          let userFound = users.find(user => user.email === email && user.password === password && user.username === username);
 
-          for (let i of data) {
-              if (i.email === email && i.password === password && i.username === username) {
-                  alert("Log in successful. Welcome to FindSell!");
-                  check = true;
+          if (userFound) {
+              alert("Login successful. Welcome to MokeSell!");
 
-                  localStorage.setItem("username", i.username); // Store username
-                  localStorage.setItem("email", i.email);
-                  localStorage.setItem("password", i.password);
+              localStorage.setItem("username", userFound.username);
+              localStorage.setItem("email", userFound.email);
+              localStorage.setItem("password", userFound.password);
 
-                  updateAccountButton(i.username);
-                  break;
-              }
-          }
-
-          if (!check) {
-              alert("Invalid email or password, try again.");
+              updateAccountButton(userFound.username);
+              window.location.href = "account.html"; // Redirect after login
+          } else {
+              alert("Invalid credentials. Please try again.");
           }
       } catch (error) {
-          alert("Error occurred during login. Please try again.", error);
+          console.error("Login error:", error);
+          alert("Error logging in. Please try again.");
       }
   });
 
   function updateAccountButton(username) {
-      accountBtn.textContent = username;
-      accountBtn.addEventListener("click", function () {
-          window.location.href = "account.html"; // Redirect to account page
-      });
+      let accountBtn = document.querySelector(".btn-info");
+      if (accountBtn) {
+          accountBtn.textContent = username;
+          accountBtn.addEventListener("click", function () {
+              window.location.href = "account.html"; // Redirect to account page
+          });
+      }
   }
 
-
+  // Check if user is already logged in and update button
+  let loggedInUser = localStorage.getItem("username");
+  if (loggedInUser) {
+      updateAccountButton(loggedInUser);
+  }
 });
+

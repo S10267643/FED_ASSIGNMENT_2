@@ -9,9 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="script.js" defer></script>  
-    <script src="signup.js"></script>
-    <script src="display_listings.js"></script>
+ 
+    <script src="signup.js" defer></script>
+    <script src="display_listings.js" defer></script>
   </head>
 
 
@@ -87,6 +87,19 @@
           <input type="text" class="search-bar" id="search-input" placeholder="Search...">
           <button type="submit" class="search-button" >Search</button>
       </form>
+      <script>
+        document.getElementById("search-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const searchTerm = document.getElementById("search-input").value.trim();
+
+  if (searchTerm) {
+      // Redirect to loading page first
+      window.location.href = `loading.html?query=${encodeURIComponent(searchTerm)}`;
+  }
+});
+
+      </script>
   </div>
   
   </header>
