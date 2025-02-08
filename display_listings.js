@@ -46,17 +46,14 @@ function displayListings(listings) {
     let trendingCount = 0;
     let forYouCount = 0;
 
-    const shuffledListings = listings.sort(() => Math.random() - 0.5);
-
-    shuffledListings.forEach(listing => {
+    listings.forEach(listing => {
         const card = document.createElement("div");
         card.classList.add("listing-card");
 
-        // Assign or get unique ID
-        const listingID = getListingID(listing);
+        // Use the actual listing _id from the database
+        const listingID = listing._id;
 
         card.setAttribute("data-id", listingID);
-
         card.innerHTML = `
             <img src="${listing.img}" alt="${listing['listing-name']}">
             <div class="details">
@@ -66,12 +63,11 @@ function displayListings(listings) {
             </div>
         `;
 
-        // Add click event to navigate to listing page with the unique ID
+        // Navigate to listing.html with the correct ID
         card.addEventListener("click", function () {
             window.location.href = `listing.html?id=${listingID}`;
         });
 
-        // Assign listings to Trending or For You
         if (trendingCount < 10) {
             trendingContainer.appendChild(card);
             trendingCount++;
@@ -81,6 +77,7 @@ function displayListings(listings) {
         }
     });
 }
+
 
 // Load Listings on Page Load
 document.addEventListener("DOMContentLoaded", fetchListings);

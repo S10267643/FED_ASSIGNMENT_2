@@ -78,7 +78,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
     const title = document.getElementById('listingTitle').value;
     const price = document.getElementById('listingPrice').value;
     const description = document.getElementById('listingDescription').value;
-    const images = document.getElementById('listingImages').files;
+    const images = document.getElementById('listingImages').value;
 
     if (!title || !price || !description || images.length === 0) {
         alert('Please fill out all fields and upload at least one image.');
@@ -90,13 +90,10 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
         "listing-name": title,
         "price": price,
         "desc": description,
-        "img": ""  // Placeholder, you can upload the image to a cloud storage and then add the URL
+        "img": images 
     };
 
-    // Add image upload handling (upload image to cloud storage)
-    // (For now, we'll skip image upload and just show a placeholder image URL)
-    const placeholderImage = "https://via.placeholder.com/150";  // Replace with actual image URL after uploading
-    formData.img = placeholderImage;
+
 
     // API request to add new listing to database
     const API_KEY = "67a057fa417fee624eb30f33";
@@ -118,89 +115,88 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
         .then(data => {
             console.log("Listing created:", data);
             closeNewListingModal();
-            loadListings();  // Reload the listings to show the new listing
+            
         })
         .catch(error => {
             console.error("Error adding listing:", error);
             alert("An error occurred while adding your listing.");
         });
 });
-// Function to fetch and display the listings
-function loadListings() {
-    const API_KEY = "67a057fa417fee624eb30f33";
-    const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
-    // Fetch existing listings from the database
-    
-    const settings = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "x-apikey": API_KEY,
-            "Cache-Control": "no-cache",
-        },
-    };
 
-    fetch(API_URL, settings)
-        .then(response => response.json())
-        .then(data => {
-            const listingsGrid = document.querySelector('.listings-grid');
-            listingsGrid.innerHTML = '';  // Clear the current listings
 
-            // Loop through each listing and display it
-            data.forEach(listing => {
-                const card = document.createElement('div');
-                card.classList.add('listing-card');
 
-                card.innerHTML = `
-                    <img src="${listing.img}" alt="${listing['listing-name']}" class="listing-image">
-                    <div class="listing-content">
-                        <h3>${listing['listing-name']}</h3>
-                        <p class="listing-price">$${listing.price}</p>
-                        <p class="listing-status ${listing.status || 'active'}">${listing.status || 'Active'}</p>
-                        <div class="listing-actions">
-                            <button class="edit-listing">Edit</button>
-                            <button class="delete-listing" onclick="deleteListing('${listing._id}')">Delete</button>
-                        </div>
-                    </div>
-                `;
 
-                listingsGrid.appendChild(card);
-            });
-        })
-        .catch(error => {
-            console.error("Error loading listings:", error);
-            alert("Error loading listings.");
+
+
+
+
+
+
+
+const API_KEY = "67a057fa417fee624eb30f33";
+const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
+
+// Fetch and display listings
+async function fetchListings() {
+    try {
+        const response = await fetch(API_URL, {
+            headers: { "x-apikey": API_KEY }
         });
+        const listings = await response.json();
+        displayListings(listings);
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+    }
 }
 
-// Load listings when the page loads
-document.addEventListener("DOMContentLoaded", loadListings);
-// Function to delete a listing
-function deleteListing(listingId) {
-    const API_KEY = "67a057fa417fee624eb30f33";
-    const API_URL = `https://mokesell-536e.restdb.io/rest/listings/${listingId}`;
+function displayListings(listings) {
+    const listingContainer = document.getElementById("listings-grid");
 
-    const settings = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "x-apikey": API_KEY,
-            "Cache-Control": "no-cache",
-        },
-    };
+    listings.forEach(listing => {
+        const card = document.createElement("div");
+        card.classList.add("listing-card");
 
-    fetch(API_URL, settings)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Listing deleted:", data);
-            loadListings();  // Reload listings to remove the deleted one
-        })
-        .catch(error => {
-            console.error("Error deleting listing:", error);
-            alert("An error occurred while deleting the listing.");
+        // Use the actual database _id instead of a generated ID
+        const listingID = listing._id;
+
+        card.setAttribute("data-id", listingID);
+
+        card.innerHTML = `
+            <img src="${listing.img}" alt="${listing['listing-name']}">
+            <div class="details">
+                <h3>${listing['listing-name']}</h3>
+                <p>${listing.desc}</p>
+                <p class="price">$${listing.price}</p>
+            </div>
+        `;
+
+        // Add click event to navigate to listing page with the correct _id
+        card.addEventListener("click", function () {
+            window.location.href = `listing.html?id=${listingID}`;
         });
+
+        listingContainer.appendChild(card);
+    });
 }
+
+// Load Listings on Page Load
+document.addEventListener("DOMContentLoaded", fetchListings);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Password Change Modal
