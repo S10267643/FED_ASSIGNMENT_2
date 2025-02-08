@@ -7,7 +7,6 @@ As the user enters the website, a loading Lottie Animation will play.
 ## Credits 
 The game code is taken from this: https://github.com/LERUfic/Catch-The-Beat-Java- ☑️
 ### Media 
-Images of the listings are taken from Google.
 ### Acknowledgements
 Various features of the MokeSell website have been inspired from Carousell. 👜
 Logo design is generated from design.com
