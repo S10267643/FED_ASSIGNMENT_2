@@ -95,16 +95,7 @@ body {
     background-color: rgb(254, 242, 242);
 }
 
-.message-badge {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: rgb(239, 68, 68);
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.125rem 0.375rem;
-    border-radius: 9999px;
-}
+
 
 /* Main Content */
 .main-content {
