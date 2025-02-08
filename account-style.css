@@ -464,6 +464,7 @@ body {
     padding: 1rem;
     border-top: 1px solid rgb(229, 231, 235);
     display: flex;
+    margin-bottom: 1px;
     gap: 0.5rem;
 }
 

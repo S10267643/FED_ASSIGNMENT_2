@@ -61,6 +61,8 @@ document.getElementById('messageInput').addEventListener('keypress', function(e)
     }
 });
 
+
+
 // New Listing Modal
 function openNewListingModal() {
     const modal = document.getElementById('newListingModal');
@@ -72,7 +74,43 @@ function closeNewListingModal() {
     modal.classList.remove('active');
 }
 
-document.getElementById('newListingForm').addEventListener('submit', function (e) {
+
+async function uploadImage(file) {
+    const API_KEY = "67a057fa417fee624eb30f33";
+    const API_URL = "https://mokesell-536e.restdb.io/media";
+
+    let formData = new FormData();
+    formData.append("myfile", file);  // Attach file
+
+    console.log("Uploading image:", file.name);  // Debug log
+
+    try {
+        let response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "x-apikey": API_KEY  // NO Content-Type, FormData sets it
+            },
+            body: formData
+        });
+
+        let data = await response.json();
+        console.log("Image upload response:", data);
+
+        if (data.ids && data.ids.length > 0) {
+            const imageUrl = `https://mokesell-536e.restdb.io/media/${data.ids[0]}`;
+            console.log("Image URL:", imageUrl);
+            return imageUrl;
+        } else {
+            throw new Error("Image upload failed: No ID returned");
+        }
+    } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Image upload failed. Check console for details.");
+        return null;
+    }
+}
+
+document.getElementById('newListingForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const title = document.getElementById('listingTitle').value;
@@ -85,121 +123,91 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
         return;
     }
 
-    // Prepare form data for API request
+    const imageUrl = await uploadImage(images[0]);  // Upload image first
+
+    if (!imageUrl) {
+        alert("Image upload failed. Please try again.");
+        return;
+    }
+
+    // Now create the listing with the image URL
     const formData = {
         "listing-name": title,
         "price": price,
         "desc": description,
-        "img": ""  // Placeholder, you can upload the image to a cloud storage and then add the URL
+        "img": imageUrl  // Store the uploaded image URL
     };
 
-    // Add image upload handling (upload image to cloud storage)
-    // (For now, we'll skip image upload and just show a placeholder image URL)
-    const placeholderImage = "https://via.placeholder.com/150";  // Replace with actual image URL after uploading
-    formData.img = placeholderImage;
-
-    // API request to add new listing to database
     const API_KEY = "67a057fa417fee624eb30f33";
     const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
-    
-    const settings = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "x-apikey": API_KEY,
-            "Cache-Control": "no-cache",
-        },
-        body: JSON.stringify(formData),
-    };
 
-    // Send request to add listing to the database
-    fetch(API_URL, settings)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Listing created:", data);
-            closeNewListingModal();
-            loadListings();  // Reload the listings to show the new listing
-        })
-        .catch(error => {
-            console.error("Error adding listing:", error);
-            alert("An error occurred while adding your listing.");
+    try {
+        let response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-apikey": API_KEY,
+                "Cache-Control": "no-cache",
+            },
+            body: JSON.stringify(formData),
         });
+
+        let data = await response.json();
+        console.log("Listing created:", data);
+        closeNewListingModal();
+        loadListings();  // Reload listings to show the new one
+    } catch (error) {
+        console.error("Error adding listing:", error);
+        alert("An error occurred while adding your listing.");
+    }
 });
-// Function to fetch and display the listings
 function loadListings() {
     const API_KEY = "67a057fa417fee624eb30f33";
     const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
-    // Fetch existing listings from the database
-    const settings = {
+    fetch(API_URL, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             "x-apikey": API_KEY,
             "Cache-Control": "no-cache",
         },
-    };
+    })
+    .then(response => response.json())
+    .then(data => {
+        const listingsGrid = document.querySelector('.listings-grid');
+        listingsGrid.innerHTML = '';  // Clear current listings
 
-    fetch(API_URL, settings)
-        .then(response => response.json())
-        .then(data => {
-            const listingsGrid = document.querySelector('.listings-grid');
-            listingsGrid.innerHTML = '';  // Clear the current listings
+        data.forEach(listing => {
+            const card = document.createElement('div');
+            card.classList.add('listing-card');
 
-            // Loop through each listing and display it
-            data.forEach(listing => {
-                const card = document.createElement('div');
-                card.classList.add('listing-card');
+            // Default image placeholder if no image exists
+            let imageUrl = listing.img || "https://via.placeholder.com/150";
 
-                card.innerHTML = `
-                    <img src="${listing.img}" alt="${listing['listing-name']}" class="listing-image">
-                    <div class="listing-content">
-                        <h3>${listing['listing-name']}</h3>
-                        <p class="listing-price">$${listing.price}</p>
-                        <p class="listing-status ${listing.status || 'active'}">${listing.status || 'Active'}</p>
-                        <div class="listing-actions">
-                            <button class="edit-listing">Edit</button>
-                            <button class="delete-listing" onclick="deleteListing('${listing._id}')">Delete</button>
-                        </div>
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${listing['listing-name']}" class="listing-image">
+                <div class="listing-content">
+                    <h3>${listing['listing-name']}</h3>
+                    <p class="listing-price">$${listing.price}</p>
+                    <p class="listing-status ${listing.status || 'active'}">${listing.status || 'Active'}</p>
+                    <div class="listing-actions">
+                        <button class="edit-listing">Edit</button>
+                        <button class="delete-listing" onclick="deleteListing('${listing._id}')">Delete</button>
                     </div>
-                `;
+                </div>
+            `;
 
-                listingsGrid.appendChild(card);
-            });
-        })
-        .catch(error => {
-            console.error("Error loading listings:", error);
-            alert("Error loading listings.");
+            listingsGrid.appendChild(card);
         });
+    })
+    .catch(error => {
+        console.error("Error loading listings:", error);
+        alert("Error loading listings.");
+    });
 }
 
-// Load listings when the page loads
-document.addEventListener("DOMContentLoaded", loadListings);
-// Function to delete a listing
-function deleteListing(listingId) {
-    const API_KEY = "67a057fa417fee624eb30f33";
-    const API_URL = `https://mokesell-536e.restdb.io/rest/listings/${listingId}`;
 
-    const settings = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "x-apikey": API_KEY,
-            "Cache-Control": "no-cache",
-        },
-    };
-
-    fetch(API_URL, settings)
-        .then(response => response.json())
-        .then(data => {
-            console.log("Listing deleted:", data);
-            loadListings();  // Reload listings to remove the deleted one
-        })
-        .catch(error => {
-            console.error("Error deleting listing:", error);
-            alert("An error occurred while deleting the listing.");
-        });
-}
 
 
 // Password Change Modal
@@ -262,4 +270,57 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html"; // Redirect to login if not logged in
     }
 
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const APIKEY = "67a057fa417fee624eb30f33";
+    const API_URL = "https://mokesell-536e.restdb.io/rest/accounts";
+    
+    // Get the logged-in username from localStorage
+    const loggedInUser = localStorage.getItem("username");
+
+    if (!loggedInUser) {
+        // If no user is logged in, show an error or redirect
+        alert("Please log in first.");
+        return;
+    }
+
+    // Fetch the user data from the database
+    const settings = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": APIKEY,
+            "Cache-Control": "no-cache",
+        },
+    };
+
+    fetch(API_URL, settings)
+        .then(response => response.json())
+        .then(data => {
+            let user = data.find(user => user.username === loggedInUser);
+            
+            if (user) {
+                // If the user is found, get the MokePoints
+                const mokePoints = user.mokePoints || 0;  // Default to 0 if no MokePoints field
+                displayMokePoints(mokePoints);
+            } else {
+                // If the user is not found, show an error or set points to 0
+                displayMokePoints(0);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Error fetching user data.");
+        });
+    
+    function displayMokePoints(points) {
+        // Display the MokePoints in the HTML
+        const pointsElement = document.querySelector(".points-value");
+        if (pointsElement) {
+            pointsElement.textContent = points;
+        }
+    }
 });
