@@ -146,25 +146,14 @@ position: fixed;
 }
 
 
-
-
-
-
-/* Game Image Container */
-.game-img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 55vh;
-  width: 100%;
-  background-color: #87e1ff;
+.carousel-inner {
+  height: 600px; /* Set a fixed height */
 }
 
-.game-img-container img {
-  width: 100%;
-  height: auto;
-  background-color: azure;
-  padding: 20px;
+.carousel-inner > .item > img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover; /* Ensures images fill the space without distortion */
 }
 
 
