@@ -1,5 +1,5 @@
 const API_KEY = "67a7acd693d83b6c60235224";
-const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
+
 let settings = {
     method: "POST",
     headers: {
@@ -7,7 +7,7 @@ let settings = {
         "x-apikey": API_KEY,
         "Cache-Control": "no-cache"
     },
-    body: JSON.stringify(jsondata),
+
     mode: "cors"  // Add this line
 };
 
@@ -39,7 +39,7 @@ function getListingID(listing) {
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch("https://mokesell-536e.restdb.io/rest/listings"  , {
             headers: { "x-apikey": API_KEY }
         });
         const listings = await response.json();
