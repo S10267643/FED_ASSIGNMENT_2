@@ -243,7 +243,7 @@ document.getElementById("logout").addEventListener("click", function () {
 
 
 
-
+//mokepionts function
 
 
 
@@ -263,4 +263,58 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html"; // Redirect to login if not logged in
     }
 
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const APIKEY = "67a057fa417fee624eb30f33";
+    const API_URL = "https://mokesell-536e.restdb.io/rest/accounts";
+    
+    // Get the logged-in username from localStorage
+    const loggedInUser = localStorage.getItem("username");
+
+    if (!loggedInUser) {
+        // If no user is logged in, show an error or redirect
+        alert("Please log in first.");
+        return;
+    }
+
+    // Fetch the user data from the database
+    const settings = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": APIKEY,
+            "Cache-Control": "no-cache",
+        },
+    };
+
+    fetch(API_URL, settings)
+        .then(response => response.json())
+        .then(data => {
+            let user = data.find(user => user.username === loggedInUser);
+            
+            if (user) {
+                // If the user is found, get the MokePoints
+                const mokePoints = user.mokePoints || 0;  // Default to 0 if no MokePoints field
+                displayMokePoints(mokePoints);
+            } else {
+                // If the user is not found, show an error or set points to 0
+                displayMokePoints(0);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+            alert("Error fetching user data.");
+        });
+    
+    function displayMokePoints(points) {
+        // Display the MokePoints in the HTML
+        const pointsElement = document.querySelector(".points-value");
+        if (pointsElement) {
+            pointsElement.textContent = points;
+        }
+    }
 });
