@@ -1,7 +1,8 @@
 # FED Assignment 2 💻
 For this assignment, we will be creating the front and back end of a fictional e-commerce website called MokeSell. 💰
 This website is aimed towards users who are intersted in buying or selling products conveniently online. 📊
-
+## Design Process
+Wireframe: https://www.figma.com/design/y1iNdPyo5eGawXgtq76owb/FED-ASSIGNMENT-2?node-id=2-2&t=xZ5bMLC9XurK3yyh-0
 ## Features 
 As the user enters the website (index.html), The user is introduced to the header and the account button. The account button introduces the Sign Up/ Login Modal. New users are to fill in the Sign Up form, while users with existing accounts can simply fill in the login form. ✔️
 
