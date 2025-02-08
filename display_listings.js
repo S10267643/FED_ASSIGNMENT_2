@@ -4,7 +4,7 @@ let settings = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
-        "x-apikey": APIKEY,
+        "x-apikey": API_KEY,
         "Cache-Control": "no-cache"
     },
     body: JSON.stringify(jsondata),
