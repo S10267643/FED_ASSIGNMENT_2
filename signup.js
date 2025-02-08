@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
           let check = false;
 
           for (let i of data) {
-              if (i.email === email && i.password === password) {
+              if (i.email === email && i.password === password && i.username === username) {
                   alert("Log in successful. Welcome to FindSell!");
                   check = true;
 
