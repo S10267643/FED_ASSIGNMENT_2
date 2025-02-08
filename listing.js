@@ -41,5 +41,3 @@ async function fetchListingDetails() {
 document.addEventListener("DOMContentLoaded", fetchListingDetails);
 
 
-// Load the listing details when the page loads
-document.addEventListener("DOMContentLoaded", fetchListingDetails);
