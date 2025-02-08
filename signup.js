@@ -1,3 +1,17 @@
+let settings = {
+  method: "POST",
+  headers: {
+      "Content-Type": "application/json",
+      "x-apikey": APIKEY,
+      "Cache-Control": "no-cache"
+  },
+  body: JSON.stringify(jsondata),
+  mode: "cors"  // Add this line
+};
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const APIKEY = "67a7acd693d83b6c60235224";
 

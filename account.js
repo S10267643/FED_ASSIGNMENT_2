@@ -1,3 +1,19 @@
+
+let settings = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "x-apikey": APIKEY,
+        "Cache-Control": "no-cache"
+    },
+    body: JSON.stringify(jsondata),
+    mode: "cors"  // Add this line
+};
+
+
+
+
+
 // Profile Image Upload
 document.getElementById('imageUpload').addEventListener('change', function(event) {
     const file = event.target.files[0];
