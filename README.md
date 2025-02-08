@@ -9,7 +9,7 @@ Once the user logs in the account button renames to the user's username, and cli
 
 When the user searches something on the search bar, the search button will be pressed, and a Lottie Animation will play for 2 seconds. Then the user will be brought to the search.html page, where listings will be filtered through the search result. Matching results will subsequently appear on the user's screen. 🖥
 
-Upon clicking on a listing, the user will be able to view the full details of the listing. A chat feature is also implemented on this page for convenience as interested buyers will have to communicate with the seller through this chat feature. 🗣
+Upon clicking on a listing, the user will be able to view the full details of the listing. The back button at the top left of the screen will return you back to the homepage. A chat feature is also implemented on this page for convenience as interested buyers will have to communicate with the seller through this chat feature. 🗣
 
 ## Credits 
 The game code is taken from this: ☑️
