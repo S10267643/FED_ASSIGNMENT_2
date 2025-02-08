@@ -10,7 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="script.js" defer></script>  
-  
     <script src="signup.js"></script>
     <script src="display_listings.js"></script>
   </head>
@@ -132,26 +131,27 @@
       </a>
     </div>
   </section>
-  <main>
+
+
     <!-- Trending Section with Side Scroller -->
     <section class="listing-section">
         <h2>Trending</h2>
         <div class="scroll-container">
             <button class="scroll-btn left" onclick="scrollTrending(-1)">&#10094;</button>
-            <div class="listings-container trending" id="trending-listings"></div>
+            <div class="listings-container trending" id="trending-listings">
+
+            </div>
             <button class="scroll-btn right" onclick="scrollTrending(1)">&#10095;</button>
         </div>
     </section>
-
-
-    
-
     <!-- For You Section in Rows of 4 -->
     <section class="listing-section">
         <h2>For You</h2>
-        <div class="listings-container foryou" id="foryou-listings"></div>
+        <div class="listings-container foryou" id="foryou-listings">
+
+        </div>
     </section>
-</main>
+
 
 <footer class="footer">
   <div class="footer-container">
