@@ -5,9 +5,11 @@ document.getElementById("search-form").addEventListener("submit", function (even
   const searchTerm = document.getElementById("search-input").value.trim();
 
   if (searchTerm) {
-      window.location.href = `search.html?query=${encodeURIComponent(searchTerm)}`;
+      // Redirect to loading page first
+      window.location.href = `loading.html?query=${encodeURIComponent(searchTerm)}`;
   }
 });
+
 
 
   // Game files
