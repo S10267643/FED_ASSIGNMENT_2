@@ -232,7 +232,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(e) {
 // Handle logout
 document.getElementById("logout").addEventListener("click", function () {
     localStorage.clear(); // Remove stored user data
-    window.location.href = "loading.html"; // Redirect to home page
+    window.location.href = "index.html"; // Redirect to home page
 });
 
 
