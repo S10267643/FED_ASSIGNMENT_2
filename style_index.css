@@ -172,19 +172,35 @@ position: fixed;
 /* Section Styling */
 .listing-section {
   margin: 30px auto;
-  width: 90%;
-  max-width: 1200px;
+  width: 1300px;
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Ensure listings overflow the container */
 .listings-container {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  scroll-behavior: smooth;
+  white-space: nowrap; /* Prevent wrapping */
+  width: 1500px; /* Make it wider than the section so it overflows */
+}
+
+
+.listings-container .listing-item {
+  flex: 0 0 auto; /* Prevents items from stretching */
+  width: 250px; /* Adjust width as needed */
+  min-width: 250px; /* Ensures items do not shrink */
+}
+
+#trending-listings {
+  overflow-x: auto;  /* Enables horizontal scrolling */
+  white-space: nowrap; /* Prevents wrapping of child elements */
 }
 
 /* Listing Card */
@@ -225,20 +241,25 @@ position: fixed;
 .listing-card .price {
   font-size: 16px;
   font-weight: bold;
-  color: #67a057;
+  color: #3374cf;
   margin-top: 5px;
 }
 
 /* Trending Section (Side Scroller) */
 .scroll-container {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto; /* Allow horizontal scrolling */
   width: 100%;
+  margin: 30px auto;
+  white-space: nowrap;
 }
+
 
 .trending {
   display: flex;
-  overflow-x: auto;
+  flex-wrap: nowrap; /* Ensures items stay in a row */
+  justify-content: flex-start; /* Aligns items to the left */
+  overflow-x: auto; /* Enables horizontal scrolling */
   scroll-behavior: smooth;
   gap: 15px;
   padding: 10px;
@@ -249,6 +270,7 @@ position: fixed;
 .trending::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari */
 }
+
 
 /* Scroll Buttons */
 .scroll-btn {
@@ -294,19 +316,6 @@ position: fixed;
   }
 }
 
-
-
-
-
-/*
-.trending-section,.discount-section, .foryou-section {
-  width: 100%;
-  text-align: left;
-  margin-top: 20px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-*/
 
 /* Footer Styles */
 .footer {
