@@ -3,12 +3,13 @@ For this assignment, we will be creating the front and back end of a fictional e
 This website is aimed towards users who are intersted in buying or selling products conveniently online. 📊
 ## Design Process
 This website hopes in achieving seamless transaction between the buyer and seller through the chat feature in the listing page, while also providing fun activities for users to enjoy while browsing through MokeSell, such as the minigame at the homepage. The website also aims to have users to continue using MokeSell as a reliable source of selling and purchasing products of all sorts. 🛒🛍️
+
+Wireframe: https://www.figma.com/design/y1iNdPyo5eGawXgtq76owb/FED-ASSIGNMENT-2?node-id=2-2&t=xZ5bMLC9XurK3yyh-0
 ## Assistive AI
 For this assignment, ChatGPT and bolt.new, an asstive AI to specifically create has been used to construct our website.
 ![Screenshot 2025-02-09 224918](https://github.com/user-attachments/assets/4ea6e930-8405-4b2e-a6ed-11596a800625)
 ![Screenshot 2025-02-09 230212](https://github.com/user-attachments/assets/6ecd8bd3-7276-4306-80ab-6df67fc81cc0)
 
-Wireframe: https://www.figma.com/design/y1iNdPyo5eGawXgtq76owb/FED-ASSIGNMENT-2?node-id=2-2&t=xZ5bMLC9XurK3yyh-0
 ## Features 
 As the user enters the website (index.html), The user is introduced to the header and the account button. The account button introduces the Sign Up/ Login Modal. New users are to fill in the Sign Up form, while users with existing accounts can simply fill in the login form. ✔️
 
