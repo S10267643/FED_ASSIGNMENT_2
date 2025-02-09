@@ -172,19 +172,33 @@ position: fixed;
 /* Section Styling */
 .listing-section {
   margin: 30px auto;
-  width: 90%;
-  max-width: 1200px;
+  width: 1300px;
   background: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Ensure listings overflow the container */
 .listings-container {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  justify-content: center;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+  white-space: nowrap; /* Prevent wrapping */
+  width: 1500px; /* Make it wider than the section so it overflows */
+}
+
+
+.listings-container .listing-item {
+  flex: 0 0 auto; /* Prevents items from stretching */
+  width: 300px; /* Adjust width as needed */
+  min-width: 250px; /* Ensures items do not shrink */
+}
+
+#trending-listings {
+  white-space: nowrap; /* Prevents wrapping of child elements */
 }
 
 /* Listing Card */
@@ -225,7 +239,7 @@ position: fixed;
 .listing-card .price {
   font-size: 16px;
   font-weight: bold;
-  color: #67a057;
+  color: #3374cf;
   margin-top: 5px;
 }
 
@@ -234,11 +248,15 @@ position: fixed;
   position: relative;
   overflow: hidden;
   width: 100%;
+  margin: 30px auto;
+  white-space: nowrap;
 }
+
 
 .trending {
   display: flex;
-  overflow-x: auto;
+  flex-wrap: nowrap; /* Ensures items stay in a row */
+  justify-content: flex-start; /* Aligns items to the left */
   scroll-behavior: smooth;
   gap: 15px;
   padding: 10px;
@@ -250,7 +268,8 @@ position: fixed;
   display: none; /* Hide scrollbar for Chrome, Safari */
 }
 
-/* Scroll Buttons */
+
+/* Scroll Buttons (improve button positioning) */
 .scroll-btn {
   position: absolute;
   top: 50%;
@@ -262,7 +281,6 @@ position: fixed;
   cursor: pointer;
   font-size: 24px;
   z-index: 10;
-
   transition: background 0.3s ease-in-out;
 }
 
@@ -270,20 +288,20 @@ position: fixed;
   background: rgba(0, 0, 0, 0.9);
 }
 
-/* Left Scroll Button */
+/* Adjust button positions to make them more clickable */
 .scroll-btn.left {
-  left: -5px;
+  left: 10px; /* Increase spacing from left edge */
 }
 
-/* Right Scroll Button */
 .scroll-btn.right {
-  right: -5px;
+  right: 10px; /* Increase spacing from right edge */
 }
+
 
 /* For You Section (Grid Layout) */
 .foryou {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(4, 1fr));
   gap: 15px;
 }
 
@@ -294,19 +312,6 @@ position: fixed;
   }
 }
 
-
-
-
-
-/*
-.trending-section,.discount-section, .foryou-section {
-  width: 100%;
-  text-align: left;
-  margin-top: 20px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-*/
 
 /* Footer Styles */
 .footer {
