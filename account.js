@@ -266,11 +266,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             let user = data.find(user => user.username === loggedInUser);
-            
-            if (user) {
+            console.log(user);
+            if (Object.keys(user).length!=0) {
+
                 // If the user is found, get the MokePoints
-                const mokePoints = user.mokePoints || 0;  // Default to 0 if no MokePoints field
-                displayMokePoints(mokePoints);
+                mokepoints = user.mokepoints || 0; 
+                console.log(user.mokepoints);  // Default to 0 if no MokePoints field
+                displayMokePoints(mokepoints);
             } else {
                 // If the user is not found, show an error or set points to 0
                 displayMokePoints(0);
