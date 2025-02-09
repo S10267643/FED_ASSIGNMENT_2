@@ -5,7 +5,7 @@
 }
 
 .btn {
-  background-color: #17a2b8;
+  background-color: #1cc3dd;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -76,7 +76,7 @@ input {
 }
 
 button {
-  background-color: #17a2b8;
+  background-color: #0995d1;
   color: white;
   padding: 10px;
   border: none;
@@ -87,7 +87,7 @@ button {
 }
 
 button:hover {
-  background-color: #138496;
+  background-color: #1e7dcb;
 }
 
 /* Responsive Design */
