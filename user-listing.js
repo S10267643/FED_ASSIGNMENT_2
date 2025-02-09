@@ -12,7 +12,7 @@ async function fetchListingDetails() {
     }
 
     try {
-        const response = await fetch(`${APIURL}/${listingId}`, {
+        const response = await fetch(`${APIlisting}/${listingId}`, {
             headers: { "x-apikey": APIKEY }
         });
 
@@ -42,7 +42,7 @@ async function deleteListing() {
     if (!confirmDelete) return;
 
     try {
-        const response = await fetch(`${APIURL}/${listingId}`, {
+        const response = await fetch(`${APIlisting}/${listingId}`, {
             method: "DELETE",
             headers: { "x-apikey": APIKEY }
         });
