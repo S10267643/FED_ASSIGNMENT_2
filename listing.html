@@ -4,37 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listing Details</title>
-    <link href="listing.css" rel="stylesheet" type="text/css"/>
-    <script src="common.js" ></script>
+    <link rel="stylesheet" href="listing.css">
+    <script src="common.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="back-button" onclick="goBack()">&#8592; Back</button> 
+    <nav class="navbar">
+        <button class="back-button" onclick="goBack()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back
+        </button>
+    </nav>
 
-    <main>
-        <section class="listing-details">
-            <img id="listing-img" alt="Listing Image">
-            <div class="info">
-                <h1 id="listing-name"></h1>
-                <p id="listing-desc"></p>
-                <p id="listing-price"></p>
-            </div>
-        </section>
+    <main class="container">
+        <div class="listing-container">
+            <section class="listing-details">
+                <div class="image-container">
+                    <img id="listing-img" alt="Listing Image" class="listing-image">
+                </div>
+                <div class="info">
+                    <h1 id="listing-name" class="listing-title"></h1>
+                    <p id="listing-price" class="listing-price"></p>
+                    <div class="divider"></div>
+                    <p id="listing-desc" class="listing-description"></p>
+                </div>
+            </section>
 
-        <!-- Chat Section -->
-        <section class="chat-section">
-            <h2>Chat</h2>
-            <div id="chat-box"></div>
-            <input type="text" id="chat-input" placeholder="Type a message...">
-            <button onclick="sendMessage()">Send</button>
-        </section>
+            <section class="chat-section">
+                <h2 class="chat-title">Chat with Seller</h2>
+                <div id="chat-box" class="chat-box"></div>
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        id="chat-input" 
+                        class="chat-input" 
+                        placeholder="Type your message here..."
+                    >
+                    <button onclick="sendMessage()" class="send-button">
+                        Send
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </div>
     </main>
 
     <script src="listing.js"></script>
-    <script>
-        function goBack() {
-            window.location.href = "index.html"; // Redirect to homepage
-        }
-    </script>
 </body>
-
 </html>
