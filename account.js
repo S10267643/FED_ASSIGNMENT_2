@@ -247,7 +247,7 @@ document.getElementById("logout").addEventListener("click", function () {
 
 
 
-//mokepionts function
+//mokepoints function
 
 
 
