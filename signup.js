@@ -1,5 +1,4 @@
-const APIKEY = "67a8388f4dfa0c7c1531a3ea";
-const APIURL="https://mokeselltests-4525.restdb.io/rest/accounts"
+
 
 //signup 
 document.addEventListener("DOMContentLoaded", function () {
@@ -46,7 +45,7 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
     }
 
     //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-    fetch(APIURL, settings)
+    fetch(APIaccounts, settings)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -95,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-          let search = await fetch(APIURL, settings);
+          let search = await fetch(APIaccounts, settings);
           const data = await search.json();
           let check = false;
         

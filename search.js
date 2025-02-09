@@ -1,6 +1,4 @@
 
-const APIKEY = "67a8388f4dfa0c7c1531a3ea";
-const APIURL = "https://mokeselltests-4525.restdb.io/rest/listings";
 
 
 
@@ -49,7 +47,7 @@ const storedIDs = JSON.parse(localStorage.getItem("listingIDs")) || {};
 // Fetch and filter listings
 async function fetchSearchResults() {
     try {
-        const response = await fetch(APIURL, {
+        const response = await fetch(APIlisting, {
             headers: { "x-apikey": APIKEY }
         });
         const listings = await response.json();

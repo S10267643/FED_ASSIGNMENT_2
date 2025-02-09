@@ -1,5 +1,3 @@
-const APIKEY = "67a8388f4dfa0c7c1531a3ea";
-const APIURL="https://mokeselltests-4525.restdb.io/rest/listings"
 
 
 // Function to generate a random unique ID
@@ -30,7 +28,7 @@ function getListingID(listing) {
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch(APIURL  , {
+        const response = await fetch(APIlisting  , {
             headers: { "x-apikey": APIKEY }
         });
         const listings = await response.json();
@@ -46,7 +44,7 @@ function displayListings(listings) {
 
     let trendingCount = 0;
     let forYouCount = 0;
-
+try{
     listings.forEach(listing => {
         const card = document.createElement("div");
         card.classList.add("listing-card");
@@ -77,6 +75,10 @@ function displayListings(listings) {
             forYouCount++;
         }
     });
+}
+catch{
+    alert("Error occurred during login. Please try again." + error.value);
+}
 }
 
 

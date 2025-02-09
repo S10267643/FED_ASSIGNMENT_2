@@ -1,5 +1,4 @@
-const APIKEY = "67a8388f4dfa0c7c1531a3ea";
-const APIURL="https://mokeselltests-4525.restdb.io/rest/accounts"
+
 
 
 
@@ -114,7 +113,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
     };
 
     // Send request to add listing to the database
-    fetch(APIURL, settings)
+    fetch(APIaccounts, settings)
         .then(response => response.json())
         .then(data => {
             console.log("Listing created:", data);
@@ -142,7 +141,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch(APIURL, {
+        const response = await fetch(APIaccounts, {
             headers: { "x-apikey": APIKEY }
         });
         const listings = await response.json();
@@ -288,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
-    fetch(APIURL, settings)
+    fetch(APIaccounts, settings)
         .then(response => response.json())
         .then(data => {
             let user = data.find(user => user.username === loggedInUser);

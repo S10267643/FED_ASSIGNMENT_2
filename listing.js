@@ -1,5 +1,4 @@
-const APIKEY = "67a8388f4dfa0c7c1531a3ea";
-const APIURL = "https://mokeselltests-4525.restdb.io/rest/listings";
+
 
 
 
@@ -14,7 +13,7 @@ async function fetchListingDetails() {
     }
 
     try {
-        const response = await fetch(APIURL, {
+        const response = await fetch(APIlisting, {
             headers: { "x-apikey": APIKEY }
         });
 
