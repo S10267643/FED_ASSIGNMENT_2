@@ -31,35 +31,8 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
 });
 
-// Chat functionality
-function sendMessage() {
-    const input = document.getElementById('messageInput');
-    const message = input.value.trim();
-    
-    if (message) {
-        const messagesContainer = document.getElementById('chatMessages');
-        const messageElement = document.createElement('div');
-        messageElement.className = 'message sent';
-        
-        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        
-        messageElement.innerHTML = `
-            <p>${message}</p>
-            <span class="message-time">${time}</span>
-        `;
-        
-        messagesContainer.appendChild(messageElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        input.value = '';
-    }
-}
 
-document.getElementById('messageInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        sendMessage();
-    }
-});
+
 
 // New Listing Modal
 function openNewListingModal() {
