@@ -1,6 +1,7 @@
 const APIKEY="67a89ff699fb602ae9e983cd"
 const APIlisting="https://mokesell3-ede2.restdb.io/rest/listings"
 const APIaccounts="https://mokesell3-ede2.restdb.io/rest/accounts"
+const APIsearch="https://mokesell3-ede2.restdb.io/rest/listings?q={\"listing-name\" : \"xxx\"}"
 const APIforuserlisting="https://mokesell3-ede2.restdb.io/rest/listings?q={\"username\" : \"xxx\"}"
 const APIforpoints="https://mokesell3-ede2.restdb.io/rest/accounts?q={\"username\" : \"xxx\"}"
 const APIvalidation="https://mokesell3-ede2.restdb.io/rest/accounts?q={\"$or\":[{\"username\" :\"xxx\" },{\"email\":\"yyy\"}]}"

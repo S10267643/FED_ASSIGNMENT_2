@@ -47,13 +47,13 @@ const storedIDs = JSON.parse(localStorage.getItem("listingIDs")) || {};
 // Fetch and filter listings
 async function fetchSearchResults() {
     try {
-        const response = await fetch(APIlisting, {
+         response = await fetch(APIlisting, {
             headers: { "x-apikey": APIKEY }
         });
-        const listings = await response.json();
+        listings = await response.json();
 
         // Filter listings based on the search query
-        const filteredListings = listings.filter(listing =>
+         filteredListings = listings.filter(listing =>
             listing["listing-name"].toLowerCase().includes(searchQuery)
         );
 
