@@ -75,10 +75,11 @@ function closeNewListingModal() {
 document.getElementById('newListingForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const title = document.getElementById('listingTitle').value;
-    const price = document.getElementById('listingPrice').value;
-    const description = document.getElementById('listingDescription').value;
-    const images = document.getElementById('listingImages').value;
+     title = document.getElementById('listingTitle').value;
+     price = document.getElementById('listingPrice').value;
+     description = document.getElementById('listingDescription').value;
+     images = document.getElementById('listingImages').value;
+    username=localStorage.getItem("username");
 
     if (!title || !price || !description || images.length === 0) {
         alert('Please fill out all fields and upload at least one image.');
@@ -90,7 +91,8 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
         "listing-name": title,
         "price": price,
         "desc": description,
-        "img": images 
+        "img": images, 
+        "username": username
     };
 
 
@@ -108,7 +110,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
     };
 
     // Send request to add listing to the database
-    fetch(APIaccounts, settings)
+    fetch(APIlisting, settings)
         .then(response => response.json())
         .then(data => {
             console.log("Listing created:", data);
@@ -136,21 +138,26 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch(APIaccounts, {
+        username=localStorage.getItem("username");
+        console.log(APIforuserlisting + username);
+
+        response = await fetch(APIforuserlisting.replace("xxx",username), {
             headers: { "x-apikey": APIKEY }
         });
-        const listings = await response.json();
+         listings = await response.json();
         displayListings(listings);
+
     } catch (error) {
         console.error("Error fetching listings:", error);
     }
 }
 
 function displayListings(listings) {
-    const listingContainer = document.getElementById("listings-grid");
 
+    listingContainer = document.getElementById("listings-grid");
+    
     listings.forEach(listing => {
-        const card = document.createElement("div");
+        card = document.createElement("div");
         card.classList.add("listing-card");
 
         // Use the actual database _id instead of a generated ID
