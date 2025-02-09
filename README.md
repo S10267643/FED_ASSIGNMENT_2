@@ -8,7 +8,7 @@ Wireframe: https://www.figma.com/design/y1iNdPyo5eGawXgtq76owb/FED-ASSIGNMENT-2?
 ## Features 
 As the user enters the website (index.html), The user is introduced to the header and the account button. The account button introduces the Sign Up/ Login Modal. New users are to fill in the Sign Up form, while users with existing accounts can simply fill in the login form. ✔️
 
-Once the user logs in the account button renames to the user's username, and clicking on it would bring you to the account.html page. In this page, users can change their profile picture, change their password, chat with other users, monitor the amount of MokePoints and vouchers they have, as well as creating a brand new listing. The logout button will log the user out of the account, bringing them back to the home page. The home button at the side will lead the user back to the index.html page without logging them out. 🔑
+Once the user logs in the account button renames to the user's username, and clicking on it would bring you to the account.html page. In this page, users can monitor the amount of MokePoints and vouchers they have, as well as creating a brand new listing. The logout button will log the user out of the account, bringing them back to the home page. The home button at the side will lead the user back to the index.html page without logging them out. 🔑
 
 When the user searches something on the search bar, the search button will be pressed, and a loading Lottie Animation will play for 2 seconds. Then the user will be redirected to the search.html page, where listings will be filtered through the search result. Matching results will subsequently appear on the user's screen. 🖥
 

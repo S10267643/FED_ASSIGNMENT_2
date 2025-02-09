@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -16,10 +17,10 @@
 
 
 
-    <script src="common.js"></script>
+  <script src="common.js"></script>
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+    <script src="game.js"></script>
     
-
   <title>Platform game engine</title>
 
     <link rel="canonical" href="https://codepen.io/dissimulate/pen/AGYEby">
@@ -65,35 +66,13 @@ p, a {
 a {
   color:#3377ee;
 }
-
-.go-back-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .go-back-button:hover {
-    background-color: #45a049;
-  }
-
-  .go-back-button:focus {
-    outline: none;
-  }
 </style>
 
   
   
   
 </head>
-<!--To go back to index-->
-<a href="index.html">
-  <button class="go-back-button">Go Back</button>
-</a>
+
 <body translate="no">
   <canvas id="canvas"></canvas>
 
@@ -264,19 +243,12 @@ var map = {
   /* scripts refered to by the "script" variable in the tile keys */
 
   scripts: {
-  /* Change player color */
-  change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-  
-  /* When the player wins, redirect to index.html */
-  next_level: 'alert("Yay! You won 200 MokePoints! Redirecting to home page."); window.location.href = "index.html";',
-  
-  /* Handle player death */
-  death: 'alert("You died!"); game.load_map(map);',
-  
-  /* Unlock a key */
-  unlock: 'game.current_map.keys[10].solid = 0; game.current_map.keys[10].colour = "#888";'
-}
-};
+    /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
+    change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+    /* you could load a new map variable here */
+    next_level: 'alert("Yay! You won! Updating your mokepoints.");updateMokePoints();window.location.href = \'index.html\';',
+    death: 'alert("You died!");window.location.href = \'index.html\';',
+    unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";' } };
 
 
 
@@ -674,98 +646,30 @@ Clarity.prototype.move_player = function () {
 };
 
 Clarity.prototype.update_player = function () {
+
   if (this.key.left) {
+
     if (this.player.vel.x > -this.current_map.vel_limit.x)
-      this.player.vel.x -= this.current_map.movement_speed.left;
+    this.player.vel.x -= this.current_map.movement_speed.left;
   }
 
   if (this.key.up) {
+
     if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
+
       this.player.vel.y -= this.current_map.movement_speed.jump;
       this.player.can_jump = false;
     }
   }
 
   if (this.key.right) {
+
     if (this.player.vel.x < this.current_map.vel_limit.x)
-      this.player.vel.x += this.current_map.movement_speed.left;
-  }
-
-  // Check if the player has finished the level (e.g., reached x > 1000)
-  if (this.player.loc.x > 1000) {
-    
-    // Update the player's MokePoints
-    document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = "https://mokesell-536e.restdb.io/rest/accounts";
-    const API_KEY = "67a7acd693d83b6c60235224";
-
-    async function updateMokePoints() {
-        let userEmail = localStorage.getItem("email"); // Retrieve logged-in user's email
-
-        if (!userEmail) {
-            alert("User not logged in!");
-            return;
-        }
-
-        try {
-            // Step 1: Fetch the user's account data from RestDB
-            let response = await fetch(`${API_URL}?q={"email": "${userEmail}"}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": API_KEY,
-                    "Cache-Control": "no-cache"
-                }
-            });
-
-            let users = await response.json();
-            if (users.length === 0) {
-                alert("User not found!");
-                return;
-            }
-
-            let user = users[0]; // Assuming emails are unique
-            let newMokePoints = (user.MokePoints || 0) + 100; // Add 100 points
-
-            // Step 2: Send a PATCH request to update the user's MokePoints
-            let updateResponse = await fetch(`${API_URL}/${user._id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-apikey": API_KEY,
-                    "Cache-Control": "no-cache"
-                },
-                body: JSON.stringify({ MokePoints: newMokePoints })
-            });
-
-            if (updateResponse.ok) {
-                alert(`Level Completed! Gained 100 MokePoints! Total: ${newMokePoints}`);
-                window.location.href = 'index.html'; // Redirect after update
-            } else {
-                alert("Error updating MokePoints. Please try again.");
-            }
-
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Failed to update MokePoints.");
-        }
-    }
-
-    // Call the function when the game is completed
-    updateMokePoints();
-});
-
-
-
-
-    // Redirect to the index.html page
-    window.location.href = 'index.html';  // Change the path if necessary
-
+    this.player.vel.x += this.current_map.movement_speed.left;
   }
 
   this.move_player();
 };
-
 
 Clarity.prototype.draw_player = function (context) {
 
@@ -794,8 +698,6 @@ Clarity.prototype.draw = function (context) {
   this.draw_map(context, false);
   this.draw_player(context);
 };
-
-
 
 /* Setup of the engine */
 
