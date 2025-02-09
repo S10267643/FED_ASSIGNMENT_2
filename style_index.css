@@ -187,7 +187,7 @@ position: fixed;
   justify-content: flex-start;
   scroll-behavior: smooth;
   white-space: nowrap; /* Prevent wrapping */
-  width: 1500px; /* Make it wider than the section so it overflows */
+  width: 3000px; /* Make it wider than the section so it overflows */
 }
 
 
