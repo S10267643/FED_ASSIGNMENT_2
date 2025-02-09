@@ -112,7 +112,7 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 async function fetchListings() {
     try {
         username=localStorage.getItem("username");
-        console.log(APIforuserlisting + username);
+        
 
         response = await fetch(APIforuserlisting.replace("xxx",username), {
             headers: { "x-apikey": APIKEY }
