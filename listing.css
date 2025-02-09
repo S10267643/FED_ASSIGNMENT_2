@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #4F46E5;
+    --primary-color: #468be5;
     --text-primary: #1F2937;
     --text-secondary: #6B7280;
     --background-color: #F9FAFB;
@@ -169,7 +169,7 @@ body {
 }
 
 .send-button:hover {
-    background-color: #4338CA;
+    background-color: #387aca;
 }
 
 @media (max-width: 768px) {
