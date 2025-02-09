@@ -185,7 +185,6 @@ position: fixed;
   display: flex;
   gap: 15px;
   justify-content: flex-start;
-  overflow-x: auto; /* Enables horizontal scrolling */
   scroll-behavior: smooth;
   white-space: nowrap; /* Prevent wrapping */
   width: 1500px; /* Make it wider than the section so it overflows */
@@ -194,12 +193,11 @@ position: fixed;
 
 .listings-container .listing-item {
   flex: 0 0 auto; /* Prevents items from stretching */
-  width: 250px; /* Adjust width as needed */
+  width: 300px; /* Adjust width as needed */
   min-width: 250px; /* Ensures items do not shrink */
 }
 
 #trending-listings {
-  overflow-x: auto;  /* Enables horizontal scrolling */
   white-space: nowrap; /* Prevents wrapping of child elements */
 }
 
@@ -248,7 +246,7 @@ position: fixed;
 /* Trending Section (Side Scroller) */
 .scroll-container {
   position: relative;
-  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow: hidden;
   width: 100%;
   margin: 30px auto;
   white-space: nowrap;
@@ -259,7 +257,6 @@ position: fixed;
   display: flex;
   flex-wrap: nowrap; /* Ensures items stay in a row */
   justify-content: flex-start; /* Aligns items to the left */
-  overflow-x: auto; /* Enables horizontal scrolling */
   scroll-behavior: smooth;
   gap: 15px;
   padding: 10px;
@@ -272,7 +269,7 @@ position: fixed;
 }
 
 
-/* Scroll Buttons */
+/* Scroll Buttons (improve button positioning) */
 .scroll-btn {
   position: absolute;
   top: 50%;
@@ -284,7 +281,6 @@ position: fixed;
   cursor: pointer;
   font-size: 24px;
   z-index: 10;
-
   transition: background 0.3s ease-in-out;
 }
 
@@ -292,20 +288,20 @@ position: fixed;
   background: rgba(0, 0, 0, 0.9);
 }
 
-/* Left Scroll Button */
+/* Adjust button positions to make them more clickable */
 .scroll-btn.left {
-  left: -5px;
+  left: 10px; /* Increase spacing from left edge */
 }
 
-/* Right Scroll Button */
 .scroll-btn.right {
-  right: -5px;
+  right: 10px; /* Increase spacing from right edge */
 }
+
 
 /* For You Section (Grid Layout) */
 .foryou {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(4, 1fr));
   gap: 15px;
 }
 
