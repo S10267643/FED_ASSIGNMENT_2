@@ -246,7 +246,7 @@ var map = {
     /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
     change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
     /* you could load a new map variable here */
-    next_level: 'alert("Yay! You won! Updating your mokepoints.");updateMokePoints();window.location.href = \'index.html\';',
+    next_level: 'alert("Yay! You won! Updating your mokepoints.");updateMokePoints();',
     death: 'alert("You died!");window.location.href = \'index.html\';',
     unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";' } };
 

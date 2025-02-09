@@ -43,12 +43,12 @@
                 window.location.href = 'index.html'; // Redirect after update
             } else {
                 alert("Error updating MokePoints. Please try again.");
-                //window.location.href = 'index.html'; // Redirect after update
+                window.location.href = 'index.html'; // Redirect after update
             }
 
         } catch (error) {
             console.error("Error:", error);
             alert("Failed to update MokePoints.");
-            //window.location.href = 'index.html'; // Redirect after update
+            window.location.href = 'index.html'; // Redirect after update
         }
     }
