@@ -176,7 +176,7 @@ function displayListings(listings) {
 
         // Add click event to navigate to listing page with the correct _id
         card.addEventListener("click", function () {
-            window.location.href = `listing.html?id=${listingID}`;
+            window.location.href = `user-listing.html?id=${listingID}`;
         });
 
         listingContainer.appendChild(card);
