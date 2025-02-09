@@ -246,10 +246,10 @@ position: fixed;
 /* Trending Section (Side Scroller) */
 .scroll-container {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
   margin: 30px auto;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevents wrapping */
 }
 
 
@@ -266,6 +266,15 @@ position: fixed;
 
 .trending::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari */
+}
+
+.trending::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Thumb color */
+  border-radius: 10px;
+}
+
+.trending::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Track color */
 }
 
 

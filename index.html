@@ -150,11 +150,9 @@
     <section class="listing-section">
         <h2>Trending</h2>
         <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollTrending(-1)">&#10094;</button>
             <div class="listings-container trending" id="trending-listings">
 
             </div>
-            <button class="scroll-btn right" onclick="scrollTrending(1)">&#10095;</button>
         </div>
     </section>
     <!-- For You Section in Rows of 4 -->
@@ -206,15 +204,6 @@
       modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
   }
 
-  function scrollTrending(direction) {
-    const container = document.getElementById("trending-listings");
-    const scrollAmount = 300; // Adjust scroll distance as needed
-
-    container.scrollBy({
-        left: direction * scrollAmount,
-        behavior: "smooth",
-    });
-}
 
 </script>
 </body>
