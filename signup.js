@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
 //[STEP 1]: Create our submit form listener
-document.getElementById("acct_submit").addEventListener("click", function (e) {
+document.getElementById("acct_submit").addEventListener("click", async function (e) {
     // Prevent default action of the button 
     e.preventDefault();
 
@@ -15,6 +15,18 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
     let username = document.getElementById("acct_name").value;
     let email = document.getElementById("acct_email").value;
     let password = document.getElementById("acct_password").value;
+    
+
+    //[STEP 2.5]: Validate form data
+    console.log(APIvalidation.replace("xxx",username).replace("yyy",email));
+    response = await fetch(APIvalidation.replace("xxx",username).replace("yyy",email), {
+      headers: { "x-apikey": APIKEY }
+  });
+  user= await response.json();
+  if  (user.length > 0) {
+    alert("Username or Email already exists.");
+    return;
+  }
 
 
 
