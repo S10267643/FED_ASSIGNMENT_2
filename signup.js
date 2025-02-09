@@ -15,7 +15,7 @@ document.getElementById("acct_submit").addEventListener("click", async function 
     let username = document.getElementById("acct_name").value;
     let email = document.getElementById("acct_email").value;
     let password = document.getElementById("acct_password").value;
-    
+    let mokepoints= 0;
 
     //[STEP 2.5]: Validate form data
     console.log(APIvalidation.replace("xxx",username).replace("yyy",email));
@@ -35,7 +35,9 @@ document.getElementById("acct_submit").addEventListener("click", async function 
     let jsondata = {
       "email": email,
       "username": username,
-      "password": password
+      "password": password,
+      "mokepoints": mokepoints 
+
     };
 
     //[STEP 4]: Create our AJAX settings. Take note of API key
