@@ -15,7 +15,7 @@ Upon clicking on a listing, the user will be able to view the full details of th
 Back to the homepage, a carousel with an image of a game console will appear. This image is clickable, as it will bring the user to a different page. In this page, users can engage in a fun platformer minigame. When the user finishes the game, they will be able to earn MokePoints. 🎮
 
 ## Credits 
-The game code is taken from this: ☑️
+The game code is taken from this: https://github.com/dissimulate/Clarity ☑️
 ### Media 
 Images from the carousel in the homepage have been taken from the Carousell website and Google. 📝
 ### Acknowledgements
