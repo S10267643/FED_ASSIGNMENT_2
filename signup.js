@@ -1,9 +1,9 @@
-
-
+const APIKEY = "67a8388f4dfa0c7c1531a3ea";
+const APIURL="https://mokeselltests-4525.restdb.io/rest/accounts"
 
 //signup 
 document.addEventListener("DOMContentLoaded", function () {
-    const APIKEY = "67a7acd693d83b6c60235224";
+    
 
 //[STEP 1]: Create our submit form listener
 document.getElementById("acct_submit").addEventListener("click", function (e) {
@@ -46,7 +46,7 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
     }
 
     //[STEP 5]: Send our AJAX request over to the DB and print response of the RESTDB storage to console.
-    fetch("https://mokesell-536e.restdb.io/rest/accounts", settings)
+    fetch(APIURL, settings)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -63,7 +63,7 @@ document.getElementById("acct_submit").addEventListener("click", function (e) {
 
 //login 
 document.addEventListener("DOMContentLoaded", function () {
-  APIKEY = "67a7acd693d83b6c60235224";
+  
   let login = document.getElementById("login");
   let accountBtn = document.querySelector(".btn-info"); // Selects the Account button
 
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Email and Password and Username cannot be empty!");
           return;
       }
-
+     
       let settings = {
           method: "GET",
           headers: {
@@ -91,13 +91,14 @@ document.addEventListener("DOMContentLoaded", function () {
               "x-apikey": APIKEY,
               "Cache-Control": "no-cache",
           }
+          
       };
 
       try {
-          let search = await fetch("https://mokesell-536e.restdb.io/rest/accounts", settings);
+          let search = await fetch(APIURL, settings);
           const data = await search.json();
           let check = false;
-
+        
           for (let i of data) {
               if (i.email === email && i.password === password && i.username === username) {
                   alert("Log in successful. Welcome to FindSell!");
@@ -116,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
               alert("Invalid email or password, try again.");
           }
       } catch (error) {
-          alert("Error occurred during login. Please try again.", error);
+          alert("Error occurred during login. Please try again." + error.value);
       }
   });
 

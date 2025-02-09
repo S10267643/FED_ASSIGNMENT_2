@@ -1,16 +1,7 @@
-const API_KEY = "67a7acd693d83b6c60235224";
-const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
+const APIKEY = "67a8388f4dfa0c7c1531a3ea";
+const APIURL = "https://mokeselltests-4525.restdb.io/rest/listings";
 
-let settings = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "x-apikey": API_KEY,
-        "Cache-Control": "no-cache"
-    },
-    body: JSON.stringify(jsondata),
-    mode: "cors"  // Add this line
-};
+
 
 // Fetch the listing details by ID
 async function fetchListingDetails() {
@@ -23,8 +14,8 @@ async function fetchListingDetails() {
     }
 
     try {
-        const response = await fetch(API_URL, {
-            headers: { "x-apikey": API_KEY }
+        const response = await fetch(APIURL, {
+            headers: { "x-apikey": APIKEY }
         });
 
         if (!response.ok) throw new Error("Failed to fetch listings.");

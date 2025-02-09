@@ -1,15 +1,5 @@
-
-let settings = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "x-apikey": API_KEY,
-        "Cache-Control": "no-cache"
-    },
-    body: JSON.stringify(jsondata),
-    mode: "cors"  // Add this line
-};
-
+const APIKEY = "67a8388f4dfa0c7c1531a3ea";
+const APIURL="https://mokeselltests-4525.restdb.io/rest/accounts"
 
 
 
@@ -111,22 +101,20 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 
 
 
-    // API request to add new listing to database
-    const API_KEY = "67a7acd693d83b6c60235224";
-    const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
+   
     
     const settings = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "x-apikey": API_KEY,
+            "x-apikey": APIKEY,
             "Cache-Control": "no-cache",
         },
         body: JSON.stringify(formData),
     };
 
     // Send request to add listing to the database
-    fetch(API_URL, settings)
+    fetch(APIURL, settings)
         .then(response => response.json())
         .then(data => {
             console.log("Listing created:", data);
@@ -150,14 +138,12 @@ document.getElementById('newListingForm').addEventListener('submit', function (e
 
 
 
-const API_KEY = "67a7acd693d83b6c60235224";
-const API_URL = "https://mokesell-536e.restdb.io/rest/listings";
 
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch(API_URL, {
-            headers: { "x-apikey": API_KEY }
+        const response = await fetch(APIURL, {
+            headers: { "x-apikey": APIKEY }
         });
         const listings = await response.json();
         displayListings(listings);
@@ -281,8 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const APIKEY = "67a7acd693d83b6c60235224";
-    const API_URL = "https://mokesell-536e.restdb.io/rest/accounts";
+   
     
     // Get the logged-in username from localStorage
     const loggedInUser = localStorage.getItem("username");
@@ -303,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
-    fetch(API_URL, settings)
+    fetch(APIURL, settings)
         .then(response => response.json())
         .then(data => {
             let user = data.find(user => user.username === loggedInUser);

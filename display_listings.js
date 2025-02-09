@@ -1,15 +1,6 @@
-const API_KEY = "67a7acd693d83b6c60235224";
+const APIKEY = "67a8388f4dfa0c7c1531a3ea";
+const APIURL="https://mokeselltests-4525.restdb.io/rest/listings"
 
-let settings = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "x-apikey": API_KEY,
-        "Cache-Control": "no-cache"
-    },
-
-    mode: "cors"  // Add this line
-};
 
 // Function to generate a random unique ID
 function generateUniqueID() {
@@ -39,8 +30,8 @@ function getListingID(listing) {
 // Fetch and display listings
 async function fetchListings() {
     try {
-        const response = await fetch("https://mokesell-536e.restdb.io/rest/listings"  , {
-            headers: { "x-apikey": API_KEY }
+        const response = await fetch(APIURL  , {
+            headers: { "x-apikey": APIKEY }
         });
         const listings = await response.json();
         displayListings(listings);
