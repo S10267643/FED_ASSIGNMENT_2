@@ -65,13 +65,35 @@ p, a {
 a {
   color:#3377ee;
 }
+
+.go-back-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .go-back-button:hover {
+    background-color: #45a049;
+  }
+
+  .go-back-button:focus {
+    outline: none;
+  }
 </style>
 
   
   
   
 </head>
-
+<!--To go back to index-->
+<a href="index.html">
+  <button class="go-back-button">Go Back</button>
+</a>
 <body translate="no">
   <canvas id="canvas"></canvas>
 
@@ -242,12 +264,19 @@ var map = {
   /* scripts refered to by the "script" variable in the tile keys */
 
   scripts: {
-    /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
-    change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-    /* you could load a new map variable here */
-    next_level: 'alert("Yay! You won! Reloading map.");game.load_map(map);',
-    death: 'alert("You died!");game.load_map(map);',
-    unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";' } };
+  /* Change player color */
+  change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+  
+  /* When the player wins, redirect to index.html */
+  next_level: 'alert("Yay! You won 200 MokePoints! Redirecting to home page."); window.location.href = "index.html";',
+  
+  /* Handle player death */
+  death: 'alert("You died!"); game.load_map(map);',
+  
+  /* Unlock a key */
+  unlock: 'game.current_map.keys[10].solid = 0; game.current_map.keys[10].colour = "#888";'
+}
+};
 
 
 
@@ -645,30 +674,35 @@ Clarity.prototype.move_player = function () {
 };
 
 Clarity.prototype.update_player = function () {
-
   if (this.key.left) {
-
     if (this.player.vel.x > -this.current_map.vel_limit.x)
-    this.player.vel.x -= this.current_map.movement_speed.left;
+      this.player.vel.x -= this.current_map.movement_speed.left;
   }
 
   if (this.key.up) {
-
     if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
-
       this.player.vel.y -= this.current_map.movement_speed.jump;
       this.player.can_jump = false;
     }
   }
 
   if (this.key.right) {
-
     if (this.player.vel.x < this.current_map.vel_limit.x)
-    this.player.vel.x += this.current_map.movement_speed.left;
+      this.player.vel.x += this.current_map.movement_speed.left;
+  }
+
+  // Check if the player has finished the level (e.g., reached x > 1000)
+  if (this.player.loc.x > 1000) {
+    // Alert the player
+    alert("Level Completed!");
+
+    // Redirect to the index.html page
+    window.location.href = 'index.html';  // Change the path if necessary
   }
 
   this.move_player();
 };
+
 
 Clarity.prototype.draw_player = function (context) {
 
@@ -697,6 +731,8 @@ Clarity.prototype.draw = function (context) {
   this.draw_map(context, false);
   this.draw_player(context);
 };
+
+
 
 /* Setup of the engine */
 
